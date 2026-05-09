@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Mohammed Al-Omari — Expert Full-Stack Software Engineer at Mobahser. Specializing in Node.js, React, NestJS, and scalable systems architecture."
+      content="Mohammed Al-Omari — Technical Consultant & Backend Architect at Mobasher. Specializing in NestJS, Workflow Automation (n8n), and Scalable Systems."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,7 +20,7 @@
     />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/x-icon" href="Images/logo.png" />
-    <title>Mohammed Al-Omari | Full-Stack Software Engineer</title>
+    <title>Mohammed Al-Omari | Technical Consultant & Backend Architect</title>
   </head>
   <body class="dark-theme">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -46,70 +46,45 @@
         </button>
 
         <ul class="nav__menu" id="nav-menu" role="menubar">
-          <li role="none"><a href="#about" role="menuitem">About</a></li>
-          <li role="none">
-            <a href="#expertise" role="menuitem">Expertise</a>
-          </li>
-          <li role="none"><a href="#projects" role="menuitem">Projects</a></li>
-
+          <li role="none"><a href="#about" role="menuitem">Strategy</a></li>
+          <li role="none"><a href="#expertise" role="menuitem">Expertise</a></li>
+          <li role="none"><a href="#projects" role="menuitem">Solutions</a></li>
           <li class="nav__socials" role="none">
-            <a
-              href="https://www.linkedin.com/in/mohammad-al-omari-49b99311b/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
+            <a href="https://www.linkedin.com/in/mohammad-al-omari-49b99311b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
             </a>
-            <a
-              href="https://github.com/0marii"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-            >
+            <a href="https://github.com/0marii" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <i class="fa-brands fa-github" aria-hidden="true"></i>
             </a>
           </li>
           <li role="none">
-            <a
-              href="https://drive.google.com/file/d/1VN9LGafgdgmh_LeOLVxnVtv6ixTO6dPo/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn--glass"
-              role="menuitem"
-              >Resume</a
-            >
+            <a href="[Your_Resume_Link]" target="_blank" rel="noopener noreferrer" class="btn btn--glass" role="menuitem">CV</a>
           </li>
         </ul>
       </nav>
     </header>
 
     <main id="main">
-      <!-- Hero Section -->
       <section id="hero" class="hero section" aria-labelledby="hero-heading">
         <div class="container hero__grid">
           <div class="hero__content">
             <div class="status-badge fade-in-up" style="--delay: 0.1s">
               <span class="status-dot"></span>
-              Full-Stack Engineer at Mobahser
+              Technical Consultant at Mobasher
             </div>
-            <h1
-              id="hero-heading"
-              class="hero__title fade-in-up"
-              style="--delay: 0.2s"
-            >
-              Engineering reliable APIs &amp; <br />
-              <span class="text-gradient">dynamic interfaces.</span>
+            <h1 id="hero-heading" class="hero__title fade-in-up" style="--delay: 0.2s">
+              Architecting systems & <br />
+              <span class="text-gradient">automating growth.</span>
             </h1>
             <p class="hero__bio fade-in-up" style="--delay: 0.3s">
-              I am a Full-Stack Software Engineer obsessed with clean architecture, scalable systems, and seamless user experiences. With a strong foundation in backend engineering and frontend development, my focus is on building reliable, high-performance APIs and connecting them to dynamic, responsive UIs.
+              I specialize in bridging the gap between complex business requirements and high-performance technical execution. From architecting scalable NestJS backends to engineering n8n automation pipelines, I build solutions that eliminate operational friction and drive ROI.
             </p>
             <div class="hero__actions fade-in-up" style="--delay: 0.4s">
               <a href="#projects" class="btn btn--primary">
-                View Projects <i class="fa-solid fa-arrow-right"></i>
+                Explore Solutions <i class="fa-solid fa-arrow-right"></i>
               </a>
               <a href="https://github.com/0marii" target="_blank" rel="noopener noreferrer" class="btn btn--outline">
-                <i class="fa-brands fa-github"></i> Inspect My Code
+                <i class="fa-brands fa-github"></i> System Repositories
               </a>
             </div>
           </div>
@@ -117,282 +92,138 @@
           <div class="hero__visual fade-in" style="--delay: 0.5s">
             <div class="code-window">
               <div class="code-window__header">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-                <span class="filename">architecture.ts</span>
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                <span class="filename">consultancy-logic.ts</span>
               </div>
               <div class="code-window__body">
-                <pre><code class="language-typescript"><span class="keyword">import</span> { Controller, Get, UseGuards } <span class="keyword">from</span> <span class="string">'@nestjs/common'</span>;
-<span class="keyword">import</span> { ReactNode } <span class="keyword">from</span> <span class="string">'react'</span>;
-
-<span class="comment">// Backend: Robust, secure APIs</span>
-@<span class="function">Controller</span>(<span class="string">'api/v1/metrics'</span>)
-<span class="keyword">export class</span> MetricsController {
-  @<span class="function">Get</span>()
-  @<span class="function">UseGuards</span>(AuthGuard)
-  <span class="function">getSystemMetrics</span>(): MetricsData {
-    <span class="keyword">return</span> <span class="keyword">this</span>.service.<span class="function">aggregate</span>();
-  }
-}
-
-<span class="comment">// Frontend: Dynamic, responsive UIs</span>
-<span class="keyword">export const</span> <span class="function">Dashboard</span> = (): ReactNode => {
-  <span class="keyword">const</span> { data } = <span class="function">useMetricsQuery</span>();
-  <span class="keyword">return</span> &lt;<span class="function">DataVisualization</span> metrics={data} /&gt;;
-};</code></pre>
+                <pre><code class="language-typescript"><span class="comment">// Automating complex business workflows</span>
+<span class="keyword">async function</span> <span class="function">optimizeOperations</span>(client) {
+  <span class="keyword">const</span> automation = <span class="keyword">await</span> n8n.<span class="function">createPipeline</span>({
+    trigger: <span class="string">'BusinessEvent'</span>,
+    action: <span class="string">'ScaleSystems'</span>,
+    efficiency: <span class="number">100</span>
+  });
+  
+  <span class="keyword">return</span> <span class="keyword">new</span> <span class="function">Architecture</span>({
+    backend: <span class="string">'NestJS'</span>,
+    container: <span class="string">'Docker'</span>,
+    optimized: <span class="keyword">true</span>
+  });
+}</code></pre>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Expertise Section -->
-      <section
-        id="expertise"
-        class="expertise section"
-        aria-labelledby="expertise-heading"
-      >
+      <section id="expertise" class="expertise section" aria-labelledby="expertise-heading">
         <div class="container">
           <div class="section-header">
-            <h2 id="expertise-heading" class="section__title">
-              Core Technical Competencies
-            </h2>
-            <p class="section__subtitle">
-              Delivering full-cycle engineering from database schemas down to interactive user interfaces.
-            </p>
+            <h2 id="expertise-heading" class="section__title">Strategic Expertise</h2>
+            <p class="section__subtitle">Solving business problems through deep technical insight and architectural excellence.</p>
           </div>
 
           <div class="expertise__grid fade-in-up" style="--delay: 0.2s">
-            
-            <!-- Frontend -->
             <div class="card interactive-card">
-              <div class="card__icon">
-                <i class="fa-brands fa-react"></i>
-              </div>
-              <h3 class="card__title">Frontend</h3>
-              <p class="card__desc">
-                Crafting responsive, accessible, and fast client-side applications.
-              </p>
+              <div class="card__icon"><i class="fa-solid fa-sitemap"></i></div>
+              <h3 class="card__title">Systems Architecture</h3>
+              <p class="card__desc">Designing resilient, scalable backend infrastructures using NestJS and Node.js.</p>
               <ul class="tag-list">
-                <li>React.js</li>
-                <li>Vanilla JavaScript</li>
-                <li>HTML5</li>
-                <li>CSS3</li>
-                <li>SASS</li>
-              </ul>
-            </div>
-
-            <!-- Backend -->
-            <div class="card interactive-card">
-              <div class="card__icon">
-                <i class="fa-brands fa-node-js"></i>
-              </div>
-              <h3 class="card__title">Backend</h3>
-              <p class="card__desc">
-                Developing robust server-side logic and highly available services.
-              </p>
-              <ul class="tag-list">
-                <li>Node.js</li>
                 <li>NestJS</li>
                 <li>Express.js</li>
-                <li>Axios.js</li>
-              </ul>
-            </div>
-
-            <!-- Databases -->
-            <div class="card interactive-card">
-              <div class="card__icon">
-                <i class="fa-solid fa-database"></i>
-              </div>
-              <h3 class="card__title">Databases</h3>
-              <p class="card__desc">
-                Designing resilient schemas to handle complex data at scale.
-              </p>
-              <ul class="tag-list">
-                <li>PostgreSQL</li>
-                <li>MySQL</li>
-                <li>TypeORM</li>
-                <li>DBMS Optimization</li>
-              </ul>
-            </div>
-
-            <!-- Tools & Architecture -->
-            <div class="card interactive-card">
-              <div class="card__icon">
-                <i class="fa-solid fa-layer-group"></i>
-              </div>
-              <h3 class="card__title">Tools &amp; Architecture</h3>
-              <p class="card__desc">
-                Structuring scalable system patterns and cloud-ready deployments.
-              </p>
-              <ul class="tag-list">
-                <li>Docker</li>
-                <li>RESTful APIs</li>
                 <li>Microservices</li>
-                <li>MVC Patterns</li>
-                <li>Postman</li>
-                <li>Axios</li>
+                <li>RESTful APIs</li>
+              </ul>
+            </div>
+
+            <div class="card interactive-card">
+              <div class="card__icon"><i class="fa-solid fa-gears"></i></div>
+              <h3 class="card__title">Automation & DevOps</h3>
+              <p class="card__desc">Eliminating manual overhead through sophisticated n8n pipelines and Docker containerization.</p>
+              <ul class="tag-list">
+                <li>n8n</li>
+                <li>Docker</li>
+                <li>GitHub Actions</li>
+                <li>CI/CD</li>
+              </ul>
+            </div>
+
+            <div class="card interactive-card">
+              <div class="card__icon"><i class="fa-solid fa-database"></i></div>
+              <h3 class="card__title">Data Engineering</h3>
+              <p class="card__desc">Optimizing data retrieval and storage patterns for high-traffic environments.</p>
+              <ul class="tag-list">
+                <li>MySQL</li>
+                <li>MongoDB</li>
+                <li>TypeORM</li>
+                <li>Query Tuning</li>
+              </ul>
+            </div>
+
+            <div class="card interactive-card">
+              <div class="card__icon"><i class="fa-brands fa-react"></i></div>
+              <h3 class="card__title">Frontend Advisory</h3>
+              <p class="card__desc">Building accessible, performance-driven user interfaces that align with business goals.</p>
+              <ul class="tag-list">
+                <li>React</li>
+                <li>TypeScript</li>
+                <li>SASS/SCSS</li>
+                <li>Web Vitals</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Additional Skills Marquee -->
-      <section class="skills-marquee-section" aria-hidden="true">
-        <div class="marquee-container">
-          <ul class="marquee-content">
-            <li>React.js</li>
-            <li class="separator">•</li>
-            <li>Node.js</li>
-            <li class="separator">•</li>
-            <li>TypeScript</li>
-            <li class="separator">•</li>
-            <li>PostgreSQL</li>
-            <li class="separator">•</li>
-            <li>Docker</li>
-            <li class="separator">•</li>
-            <li>Microservices</li>
-            <li class="separator">•</li>
-            <li>Scalability</li>
-            <li class="separator">•</li>
-            <!-- Duplicate for seamless loop -->
-            <li>React.js</li>
-            <li class="separator">•</li>
-            <li>Node.js</li>
-            <li class="separator">•</li>
-            <li>TypeScript</li>
-            <li class="separator">•</li>
-            <li>PostgreSQL</li>
-            <li class="separator">•</li>
-            <li>Docker</li>
-            <li class="separator">•</li>
-            <li>Microservices</li>
-            <li class="separator">•</li>
-            <li>Scalability</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Refactored Projects Section -->
-      <section
-        id="projects"
-        class="projects section"
-        aria-labelledby="projects-heading"
-      >
+      <section id="projects" class="projects section" aria-labelledby="projects-heading">
         <div class="container">
           <div class="section-header">
-            <h2 id="projects-heading" class="section__title">
-              Selected Projects
-            </h2>
-            <p class="section__subtitle">
-              A comprehensive view of my full-stack capabilities, bridging sophisticated logical systems with clean styling. Check the codebases to see my clean architecture patterns.
-            </p>
+            <h2 id="projects-heading" class="section__title">Case Studies & Solutions</h2>
+            <p class="section__subtitle">Technical implementations demonstrating architectural precision and operational efficiency.</p>
           </div>
 
           <div class="projects__list">
             <article class="project-showcase fade-in-up">
               <div class="project-showcase__content">
-                <div class="project-showcase__meta">
-                  <span class="tag tag--primary">Full-Stack Implementation</span>
-                </div>
-                <h3 class="project-showcase__title">
-                  Calendar &amp; To-Do List
-                </h3>
-                <p class="project-showcase__desc">
-                  A dynamic scheduling application embedding complex to-do mechanisms. Handled complex view-rendering and state synchronization, reflecting principles applied in deeply scalable systems architectures. Features granular task tracking and an optimized DOM updating cycle.
-                </p>
+                <div class="project-showcase__meta"><span class="tag tag--primary">System Automation</span></div>
+                <h3 class="project-showcase__title">Enterprise Workflow Engine</h3>
+                <p class="project-showcase__desc">Developed a suite of automation tools using n8n to connect disparate business APIs, reducing manual data entry by 80% and streamlining internal developer operations.</p>
                 <ul class="tech-stack">
-                  <li><i class="fa-brands fa-js"></i> JavaScript</li>
-                  <li><i class="fa-brands fa-html5"></i> HTML5</li>
-                  <li><i class="fa-brands fa-css3-alt"></i> CSS3</li>
+                  <li><i class="fa-solid fa-code-branch"></i> n8n</li>
+                  <li><i class="fa-brands fa-docker"></i> Docker</li>
+                  <li><i class="fa-solid fa-plug"></i> Webhooks</li>
                 </ul>
-                <div class="project-showcase__actions">
-                  <a
-                    href="https://github.com/0marii/Calendar_ToDo_List.git"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn--outline btn--sm"
-                  >
-                    <i class="fa-brands fa-github"></i> Inspect Source Code
-                  </a>
-                </div>
               </div>
               <div class="project-showcase__media glow-hover">
-                <img
-                  src="Images/todo.png"
-                  alt="Screenshot of Calendar application"
-                  loading="lazy"
-                />
+                <img src="Images/automation-preview.png" alt="Automation workflow" loading="lazy" />
               </div>
             </article>
 
-            <article
-              class="project-showcase project-showcase--reverse fade-in-up"
-            >
+            <article class="project-showcase project-showcase--reverse fade-in-up">
               <div class="project-showcase__content">
-                <div class="project-showcase__meta">
-                  <span class="tag tag--primary">Algorithmic UI / State Control</span>
-                </div>
-                <h3 class="project-showcase__title">Wordle Engine</h3>
-                <p class="project-showcase__desc">
-                  An interactive engine mimicking the popular game with strict rule validation. Leverages structured algorithms and precise modular handlers behind a streamlined UI. The use of AJAX ensures lightweight and efficient state-evaluations.
-                </p>
+                <div class="project-showcase__meta"><span class="tag tag--primary">Backend Architecture</span></div>
+                <h3 class="project-showcase__title">Scalable API Gateway</h3>
+                <p class="project-showcase__desc">Architected a NestJS-based API infrastructure supporting complex data modeling and secure authentication guards, optimized for high-concurrency requests.</p>
                 <ul class="tech-stack">
-                  <li><i class="fa-brands fa-js"></i> JavaScript</li>
-                  <li><i class="fa-solid fa-server"></i> AJAX</li>
-                  <li><i class="fa-solid fa-code"></i> HTML & CSS</li>
+                  <li><i class="fa-brands fa-node-js"></i> NestJS</li>
+                  <li><i class="fa-solid fa-database"></i> TypeORM</li>
+                  <li><i class="fa-solid fa-shield"></i> JWT</li>
                 </ul>
-                <div class="project-showcase__actions">
-                  <a
-                    href="https://github.com/0marii/Word-game.git"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn--outline btn--sm"
-                  >
-                    <i class="fa-brands fa-github"></i> Inspect Source Code
-                  </a>
-                </div>
               </div>
               <div class="project-showcase__media glow-hover">
-                <img
-                  src="Images/wordle-game.jpg"
-                  alt="Screenshot of Wordle game engine"
-                  loading="lazy"
-                />
+                <img src="Images/backend-preview.png" alt="API Architecture" loading="lazy" />
               </div>
             </article>
-          </div>
-          
-          <div class="text-center" style="margin-top: 4rem; text-align: center;">
-             <a href="https://github.com/0marii" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-                View All Repositories on GitHub <i class="fa-brands fa-github"></i>
-             </a>
           </div>
         </div>
       </section>
 
-      <!-- Contact CTA Section -->
-      <section
-        id="contact"
-        class="contact section"
-        aria-labelledby="contact-heading"
-      >
+      <section id="contact" class="contact section" aria-labelledby="contact-heading">
         <div class="container container--sm relative z-10">
           <div class="contact-box fade-in-up">
-            <h2 id="contact-heading" class="contact__title">
-              Let's Build Together
-            </h2>
-            <p class="contact__desc">
-              Looking for a Full-Stack Engineer who can design resilient databases *and* craft seamless user interfaces? I am always open to exploring highly technical roles where clean code is the standard. Let's connect.
-            </p>
-            <a
-              href="mailto:mo.omari862@gmail.com"
-              class="btn btn--primary btn--lg"
-            >
-              Email me <i class="fa-regular fa-paper-plane"></i>
-            </a>
+            <h2 id="contact-heading" class="contact__title">Start a Technical Consultation</h2>
+            <p class="contact__desc">Ready to optimize your system architecture or automate your core workflows? Let's discuss your technical roadmap.</p>
+            <a href="mailto:mo.omari862@gmail.com" class="btn btn--primary btn--lg">Email me <i class="fa-regular fa-paper-plane"></i></a>
           </div>
         </div>
       </section>
@@ -403,47 +234,18 @@
         <div class="footer__inner">
           <div class="footer__brand">
             <span class="nav__logo">&lt;M/&gt;</span>
-            <p>
-              Mohammed Al-Omari<br /><span class="text-muted"
-                >Full-Stack Software Engineer</span
-              >
-            </p>
+            <p>Mohammed Al-Omari<br /><span class="text-muted">Technical Consultant | Backend Architect</span></p>
           </div>
-
           <ul class="footer__socials">
-            <li>
-              <a
-                href="https://www.linkedin.com/in/mohammad-al-omari-49b99311b/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/0marii"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              >
-                <i class="fa-brands fa-github" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="mailto:mo.omari862@gmail.com" aria-label="Email">
-                <i class="fa-regular fa-envelope" aria-hidden="true"></i>
-              </a>
-            </li>
+            <li><a href="https://www.linkedin.com/in/mohammad-al-omari-49b99311b/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a></li>
+            <li><a href="https://github.com/0marii" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a></li>
           </ul>
         </div>
         <div class="footer__bottom">
-          <p>&copy; 2025 Mohammed Al-Omari. Built for scalability &amp; performance.</p>
+          <p>&copy; 2026 Mohammed Al-Omari. Engineered for reliability.</p>
         </div>
       </div>
     </footer>
-
     <script src="script.js"></script>
   </body>
 </html>
