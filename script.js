@@ -1,78 +1,76 @@
 /**
- * Portfolio Interactive Scripts
+ * Mohammed Al-Omari — Portfolio Scripts
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Mobile Navigation Toggle
+
+  // ── Mobile Navigation ────────────────────────────────────────────────────
   const toggle = document.querySelector(".nav__toggle");
-  const menu = document.querySelector(".nav__menu");
-  const hamburger = document.querySelector(".hamburger");
+  const menu   = document.querySelector(".nav__menu");
 
   if (toggle && menu) {
     toggle.addEventListener("click", () => {
-      const expanded = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", !expanded);
-      menu.classList.toggle("is-open", !expanded);
-
-      if (!expanded) {
-        hamburger.style.background = "transparent";
-        hamburger.style.setProperty("--pseudo-top", "0");
-        hamburger.style.setProperty("--pseudo-rotate", "45deg");
-        hamburger.style.setProperty("--pseudo-bottom", "0");
-        hamburger.style.setProperty("--pseudo-rotate-bot", "-45deg");
-      } else {
-        hamburger.style.background = "";
-      }
+      const open = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", !open);
+      menu.classList.toggle("is-open", !open);
     });
 
-    // Close menu when a link is clicked
     menu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         toggle.setAttribute("aria-expanded", "false");
         menu.classList.remove("is-open");
-        hamburger.style.background = "";
       });
     });
   }
 
-  // Interactive Card Glow Effect (Mouse Follow)
-  const cards = document.querySelectorAll(".interactive-card");
-  cards.forEach((card) => {
+  // ── Interactive Card Glow ────────────────────────────────────────────────
+  document.querySelectorAll(".interactive-card").forEach((card) => {
     card.addEventListener("mousemove", (e) => {
       const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      card.style.setProperty("--mouse-x", `${x}px`);
-      card.style.setProperty("--mouse-y", `${y}px`);
+      card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+      card.style.setProperty("--my", `${e.clientY - rect.top}px`);
     });
   });
 
-  // Intersection Observer for scroll animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  };
+  // ── Scroll Animations ────────────────────────────────────────────────────
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = "running";
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+  );
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.animationPlayState = "running";
-        // Add a class that triggers the CSS animation if it was paused or to ensure it fully plays
-        entry.target.classList.add("in-view");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // Note: Elements using 'fade-in-up' or 'fade-in' already have animations,
-  // but if we want to pause them until scroll:
-  const animatedElements = document.querySelectorAll(".fade-in, .fade-in-up");
-  animatedElements.forEach((el) => {
-    // Only pause elements below the fold initially
+  document.querySelectorAll(".fade-in, .fade-in-up").forEach((el) => {
     if (el.getBoundingClientRect().top > window.innerHeight) {
       el.style.animationPlayState = "paused";
       observer.observe(el);
     }
   });
+
+  // ── Active Nav Link on Scroll ────────────────────────────────────────────
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks  = document.querySelectorAll(".nav__menu a[href^='#']");
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => {
+            link.style.color = link.getAttribute("href") === `#${entry.target.id}`
+              ? "var(--text)"
+              : "";
+          });
+        }
+      });
+    },
+    { threshold: 0.4 }
+  );
+
+  sections.forEach((s) => sectionObserver.observe(s));
+
 });
