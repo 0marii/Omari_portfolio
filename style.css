@@ -334,6 +334,7 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: var(--
    ========================================================================== */
 .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 90px; overflow: hidden; }
 .hero__grid { display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; }
+.hero__grid > * { min-width: 0; }
 @media (min-width: 1024px) { .hero__grid { grid-template-columns: 1.1fr 0.9fr; } }
 
 .status-badge {
@@ -368,6 +369,8 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: var(--
   border-radius: var(--r-md); overflow: hidden;
   box-shadow: 0 30px 60px -20px rgba(0,0,0,.7), 0 0 0 1px var(--border);
   position: relative;
+  width: 100%;
+  max-width: 100%;
 }
 .code-window::before {
   content: ''; position: absolute; inset: 0; pointer-events: none;
