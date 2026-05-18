@@ -17,6 +17,6 @@ for (const slug of slugs) {
 }
 
 test('catalog page loads', async ({ page }) => {
-  await page.goto('/games/index.html');
-  await expect(page.locator('.g-grid .g-card')).toHaveCount(44);
+  await page.goto('/games/');
+  await expect(page.locator('.g-grid .g-card')).toHaveCount(slugs.length);
 });

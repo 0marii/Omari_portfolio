@@ -6,9 +6,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="description"
-        content="M.GAMES by Mohammed Al-Omari — Play 14 free browser games: Wordle, Snake, Tetris, 2048, Tower Build, Connect 4, Flappy Bird, Breakout, Memory, Tic-Tac-Toe, Space Shooter, Dino Runner, Whack-a-Mole, Pong. Vanilla JS, zero ads." />
+        content="M.GAMES by Mohammed Al-Omari — Play 13 free browser games: Wordle, Snake, Tetris, 2048, Tower Build, Connect 4, Flappy Bird, Memory, Tic-Tac-Toe, Space Shooter, Whack-a-Mole, Pong, Dice Wars. Vanilla JS, zero ads." />
     <meta name="keywords"
-        content="browser games, tower building, connect four, action games, skill games, arcade games, wordle, snake, tetris, 2048, flappy bird, breakout, memory match, tic tac toe, space shooter, dino runner, whack a mole, pong, Mohammed Al-Omari" />
+        content="browser games, tower building, connect four, action games, skill games, arcade games, wordle, snake, tetris, 2048, flappy bird, memory match, tic tac toe, space shooter, whack a mole, pong, dice wars, Mohammed Al-Omari" />
     <meta name="author" content="Mohammed Al-Omari" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="/games/" />
@@ -16,7 +16,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="/games/" />
-    <meta property="og:title" content="M.GAMES — 14 Free Browser Games" />
+    <meta property="og:title" content="M.GAMES — 13 Free Browser Games" />
     <meta property="og:description"
         content="Play Tower Build, Connect 4, Wordle, Tetris, Snake, Space Shooter, and more. Vanilla JS. No ads." />
     <meta property="og:image" content="/Images/logo.png" />
@@ -27,7 +27,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="M.GAMES — 14 Free Browser Games" />
+    <meta name="twitter:title" content="M.GAMES — 13 Free Browser Games" />
     <meta name="twitter:description" content="Tower Build, Connect 4, Wordle, Tetris, and more. Free, no ads." />
 
     <!-- JSON-LD -->
@@ -55,7 +55,7 @@
 
     <link rel="stylesheet" href="games.css" />
     <link rel="icon" type="image/png" href="/Images/logo.png" />
-    <title>M.GAMES — 44 Free Browser Games</title>
+    <title>M.GAMES — 13 Free Browser Games</title>
 </head>
 
 <body>
@@ -94,8 +94,7 @@
         <section class="g-hero">
             <div class="g-container">
                 <div class="g-hero__badge">
-                    <span class="g-dot"></span> 44 Games · Zero Ads · Vanilla JS
-                </div>
+                    <span class="g-dot"></span> 13 Games · Zero Ads · Vanilla JS</div>
                 <h1 class="g-hero__title">
                     <span class="g-hero__title-line">Play.</span>
                     <span class="g-hero__title-line g-grad">Build. Ship.</span>
@@ -128,250 +127,151 @@
                 <div class="g-catalog__header">
                     <span class="g-label">All Games</span>
                     <h2 class="g-section-title">Choose Your Game</h2>
-                    <p class="g-section-sub">44 browser games, each built with care. Instant play, no sign-up.</p>
+                    <p class="g-section-sub">13 browser games, each built with care. Instant play, no sign-up.</p>
                     <!-- Genre Filter -->
-                    <div class="g-filter" role="group" aria-label="Filter by genre">
-                        <button class="g-filter__btn active" data-filter="all">All</button>
-                        <button class="g-filter__btn" data-filter="Action">Action</button>
-                        <button class="g-filter__btn" data-filter="Adventure">Adventure</button>
-                        <button class="g-filter__btn" data-filter="Arcade">Arcade</button>
-                        <button class="g-filter__btn" data-filter="Board">Board</button>
-                        <button class="g-filter__btn" data-filter="Card">Card</button>
-                        <button class="g-filter__btn" data-filter="Clicker">Clicker</button>
-                        <button class="g-filter__btn" data-filter="Driving">Driving</button>
-                        <button class="g-filter__btn" data-filter="io">.io</button>
-                        <button class="g-filter__btn" data-filter="Puzzle">Puzzle</button>
-                        <button class="g-filter__btn" data-filter="Shooting">Shooting</button>
-                        <button class="g-filter__btn" data-filter="Simulation">Simulation</button>
-                        <button class="g-filter__btn" data-filter="Sports">Sports</button>
-                        <button class="g-filter__btn" data-filter="Strategy">Strategy</button>
-                        <button class="g-filter__btn" data-filter="Trivia">Trivia</button>
-                        <button class="g-filter__btn" data-filter="Word">Word</button>
-                        <button class="g-filter__btn" data-filter="Memory">Memory</button>
-                        <button class="g-filter__btn" data-filter="Skill">Skill</button>
-                    </div>
-                </div>
+        <div class="g-filter" role="group" aria-label="Filter by genre">
+          <button class="g-filter__btn active" data-filter="all">All</button>
+          <button class="g-filter__btn" data-filter="Action">Action</button>
+          <button class="g-filter__btn" data-filter="Arcade">Arcade</button>
+          <button class="g-filter__btn" data-filter="Board">Board</button>
+          <button class="g-filter__btn" data-filter="Puzzle">Puzzle</button>
+          <button class="g-filter__btn" data-filter="Strategy">Strategy</button>
+          <button class="g-filter__btn" data-filter="Word">Word</button>
+          <button class="g-filter__btn" data-filter="Memory">Memory</button>
+          <button class="g-filter__btn" data-filter="Skill">Skill</button>
+        </div>
+      </div>
 
-                <div class="g-grid">
+      <div class="g-grid">
 
-                    <a href="wordle.html" class="g-card g-card--featured g-card--has-thumb" data-genre="Word"
-                        aria-label="Play Wordle">
-                        <div class="g-card__thumb"><img src="../Images/wordle-game.jpg" alt="Wordle" loading="lazy"
-                                class="g-card__thumb-img" />
-                            <div class="g-card__thumb-veil"></div>
-                        </div>
-                        <div class="g-card__badges"><span class="g-badge g-badge--hot">HOT</span><span
-                                class="g-badge g-badge--genre">Word</span></div>
-                        <div class="g-card__icon">🟩</div>
-                        <h3 class="g-card__title">Wordle</h3>
-                        <p class="g-card__desc">Guess the 5-letter word in 6 tries.</p>
-                        <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">Word</span></div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="hangman.html" class="g-card" data-genre="Word" aria-label="Play Hangman">
+<a href="wordle.html" class="g-card g-card--featured g-card--has-thumb" data-genre="Word" aria-label="Play Wordle">
+          <div class="g-card__thumb"><img src="../Images/wordle-game.jpg" alt="Wordle" loading="lazy" class="g-card__thumb-img"/><div class="g-card__thumb-veil"></div></div>
+          <div class="g-card__badges"><span class="g-badge g-badge--hot">HOT</span><span class="g-badge g-badge--genre">Word</span></div>
+          <div class="g-card__icon">🟩</div>
+          <h3 class="g-card__title">Wordle</h3>
+          <p class="g-card__desc">Guess the 5-letter word in 6 tries.</p>
+          <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">Word</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="snake.html" class="g-card" data-genre="Arcade" aria-label="Play Snake">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--genre">Arcade</span></div>
+          <div class="g-card__icon">🐍</div>
+          <h3 class="g-card__title">Snake</h3>
+          <p class="g-card__desc">Neon snake with speed progression.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Arcade</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="tetris.html" class="g-card g-card--featured" data-genre="Arcade" aria-label="Play Tetris">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--hot">HOT</span><span class="g-badge g-badge--genre">Arcade</span></div>
+          <div class="g-card__icon">🧱</div>
+          <h3 class="g-card__title">Tetris</h3>
+          <p class="g-card__desc">Seven tetrominoes, ghost piece, levels.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Classic</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="flappy.html" class="g-card" data-genre="Arcade" aria-label="Play Flappy Bird">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--genre">Arcade</span></div>
+          <div class="g-card__icon">🐦</div>
+          <h3 class="g-card__title">Flappy Bird</h3>
+          <p class="g-card__desc">Dodge pipes, beat your high score.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Reflex</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="tower.html" class="g-card" data-genre="Arcade" aria-label="Play Building Tower">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Arcade</span></div>
+          <div class="g-card__icon">🏗️</div>
+          <h3 class="g-card__title">Building Tower</h3>
+          <p class="g-card__desc">Stack blocks with perfect timing.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Arcade</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="2048.html" class="g-card" data-genre="Puzzle" aria-label="Play 2048">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--genre">Puzzle</span></div>
+          <div class="g-card__icon">⬛</div>
+          <h3 class="g-card__title">2048</h3>
+          <p class="g-card__desc">Slide and merge tiles to 2048.</p>
+          <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">Puzzle</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="memory.html" class="g-card" data-genre="Memory" aria-label="Play Memory Match">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Memory</span></div>
+          <div class="g-card__icon">🃏</div>
+          <h3 class="g-card__title">Memory Match</h3>
+          <p class="g-card__desc">Flip pairs before time runs out.</p>
+          <div class="g-card__meta"><span class="g-tag">CSS 3D</span><span class="g-tag">Memory</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="tictactoe.html" class="g-card" data-genre="Strategy" aria-label="Play Tic-Tac-Toe">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--genre">Strategy</span></div>
+          <div class="g-card__icon">❌</div>
+          <h3 class="g-card__title">Tic-Tac-Toe</h3>
+          <p class="g-card__desc">Unbeatable minimax AI or two-player.</p>
+          <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">AI</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="connect4.html" class="g-card" data-genre="Strategy" aria-label="Play Connect 4">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Strategy</span></div>
+          <div class="g-card__icon">🔴</div>
+          <h3 class="g-card__title">Connect 4</h3>
+          <p class="g-card__desc">Drop discs, connect four in a row.</p>
+          <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">AI</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="space.html" class="g-card g-card--featured" data-genre="Action" aria-label="Play Space Shooter">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Action</span></div>
+          <div class="g-card__icon">🚀</div>
+          <h3 class="g-card__title">Space Shooter</h3>
+          <p class="g-card__desc">Blast aliens, grab power-ups.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Action</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="whack.html" class="g-card" data-genre="Skill" aria-label="Play Whack-a-Mole">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Skill</span></div>
+          <div class="g-card__icon">🔨</div>
+          <h3 class="g-card__title">Whack-a-Mole</h3>
+          <p class="g-card__desc">30-second reflex challenge.</p>
+          <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">Reflex</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="pong.html" class="g-card" data-genre="Skill" aria-label="Play Pong">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Skill</span></div>
+          <div class="g-card__icon">🏓</div>
+          <h3 class="g-card__title">Pong</h3>
+          <p class="g-card__desc">Classic paddle vs AI to 7 points.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">AI</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="dice-wars.html" class="g-card" data-genre="Board" aria-label="Play Dice Wars">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Board</span></div>
+          <div class="g-card__icon">🎲</div>
+          <h3 class="g-card__title">Dice Wars</h3>
+          <p class="g-card__desc">Roll dice, conquer territories.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Board</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
 
-                        <div class="g-card__badges"><span class="g-badge g-badge--genre">Word</span></div>
-                        <div class="g-card__icon">🪢</div>
-                        <h3 class="g-card__title">Hangman</h3>
-                        <p class="g-card__desc">Classic hangman with neon keyboard.</p>
-                        <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">Word</span></div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="word-scramble.html" class="g-card" data-genre="Word" aria-label="Play Word Scramble">
+      </div>
+    </div>
+  </section>
 
-                        <div class="g-card__badges"><span class="g-badge g-badge--genre">Word</span></div>
-                        <div class="g-card__icon">🔤</div>
-                        <h3 class="g-card__title">Word Scramble</h3>
-                        <p class="g-card__desc">Unscramble letters before time runs out.</p>
-                        <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">Word</span></div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="snake.html" class="g-card" data-genre="Arcade" aria-label="Play Snake">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--genre">Arcade</span></div>
-                        <div class="g-card__icon">🐍</div>
-                        <h3 class="g-card__title">Snake</h3>
-                        <p class="g-card__desc">Neon snake with speed progression.</p>
-                        <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Arcade</span>
-                        </div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="tetris.html" class="g-card g-card--featured" data-genre="Arcade" aria-label="Play Tetris">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--hot">HOT</span><span
-                                class="g-badge g-badge--genre">Arcade</span></div>
-                        <div class="g-card__icon">🧱</div>
-                        <h3 class="g-card__title">Tetris</h3>
-                        <p class="g-card__desc">Seven tetrominoes, ghost piece, levels.</p>
-                        <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Classic</span>
-                        </div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="flappy.html" class="g-card" data-genre="Arcade" aria-label="Play Flappy Bird">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--genre">Arcade</span></div>
-                        <div class="g-card__icon">🐦</div>
-                        <h3 class="g-card__title">Flappy Bird</h3>
-                        <p class="g-card__desc">Dodge pipes, beat your high score.</p>
-                        <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Reflex</span>
-                        </div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="breakout.html" class="g-card" data-genre="Arcade" aria-label="Play Breakout">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--genre">Arcade</span></div>
-                        <div class="g-card__icon">🧱</div>
-                        <h3 class="g-card__title">Breakout</h3>
-                        <p class="g-card__desc">Brick breaker with power-ups.</p>
-                        <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Arcade</span>
-                        </div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="tower.html" class="g-card" data-genre="Arcade" aria-label="Play Building Tower">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span
-                                class="g-badge g-badge--genre">Arcade</span></div>
-                        <div class="g-card__icon">🏗️</div>
-                        <h3 class="g-card__title">Building Tower</h3>
-                        <p class="g-card__desc">Stack blocks with perfect timing.</p>
-                        <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Arcade</span>
-                        </div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="2048.html" class="g-card" data-genre="Puzzle" aria-label="Play 2048">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--genre">Puzzle</span></div>
-                        <div class="g-card__icon">⬛</div>
-                        <h3 class="g-card__title">2048</h3>
-                        <p class="g-card__desc">Slide and merge tiles to 2048.</p>
-                        <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">Puzzle</span></div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="memory.html" class="g-card" data-genre="Memory" aria-label="Play Memory Match">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span
-                                class="g-badge g-badge--genre">Memory</span></div>
-                        <div class="g-card__icon">🃏</div>
-                        <h3 class="g-card__title">Memory Match</h3>
-                        <p class="g-card__desc">Flip pairs before time runs out.</p>
-                        <div class="g-card__meta"><span class="g-tag">CSS 3D</span><span class="g-tag">Memory</span>
-                        </div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="tictactoe.html" class="g-card" data-genre="Strategy" aria-label="Play Tic-Tac-Toe">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--genre">Strategy</span></div>
-                        <div class="g-card__icon">❌</div>
-                        <h3 class="g-card__title">Tic-Tac-Toe</h3>
-                        <p class="g-card__desc">Unbeatable minimax AI or two-player.</p>
-                        <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">AI</span></div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="connect4.html" class="g-card" data-genre="Strategy" aria-label="Play Connect 4">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span
-                                class="g-badge g-badge--genre">Strategy</span></div>
-                        <div class="g-card__icon">🔴</div>
-                        <h3 class="g-card__title">Connect 4</h3>
-                        <p class="g-card__desc">Drop discs, connect four in a row.</p>
-                        <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">AI</span></div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="space.html" class="g-card g-card--featured" data-genre="Action"
-                        aria-label="Play Space Shooter">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span
-                                class="g-badge g-badge--genre">Action</span></div>
-                        <div class="g-card__icon">🚀</div>
-                        <h3 class="g-card__title">Space Shooter</h3>
-                        <p class="g-card__desc">Blast aliens, grab power-ups.</p>
-                        <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Action</span>
-                        </div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="dino.html" class="g-card" data-genre="Action" aria-label="Play Dino Runner">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span
-                                class="g-badge g-badge--genre">Action</span></div>
-                        <div class="g-card__icon">🦖</div>
-                        <h3 class="g-card__title">Dino Runner</h3>
-                        <p class="g-card__desc">Endless runner — jump and duck.</p>
-                        <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Action</span>
-                        </div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="whack.html" class="g-card" data-genre="Skill" aria-label="Play Whack-a-Mole">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span
-                                class="g-badge g-badge--genre">Skill</span></div>
-                        <div class="g-card__icon">🔨</div>
-                        <h3 class="g-card__title">Whack-a-Mole</h3>
-                        <p class="g-card__desc">30-second reflex challenge.</p>
-                        <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">Reflex</span></div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="pong.html" class="g-card" data-genre="Skill" aria-label="Play Pong">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span
-                                class="g-badge g-badge--genre">Skill</span></div>
-                        <div class="g-card__icon">🏓</div>
-                        <h3 class="g-card__title">Pong</h3>
-                        <p class="g-card__desc">Classic paddle vs AI to 7 points.</p>
-                        <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">AI</span></div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="dice-wars.html" class="g-card" data-genre="Board" aria-label="Play Dice Wars">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span
-                                class="g-badge g-badge--genre">Board</span></div>
-                        <div class="g-card__icon">🎲</div>
-                        <h3 class="g-card__title">Dice Wars</h3>
-                        <p class="g-card__desc">Roll dice, conquer territories.</p>
-                        <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Board</span>
-                        </div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="cell-feast.html" class="g-card" data-genre="io" aria-label="Play Cell Feast">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span
-                                class="g-badge g-badge--genre">Clicker</span></div>
-                        <div class="g-card__icon">🏝️</div>
-                        <h3 class="g-card__title">Click Island</h3>
-                        <p class="g-card__desc">Sequence puzzle — click to evolve.</p>
-                        <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">Clicker</span></div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="cell-feast.html" class="g-card" data-genre="io" aria-label="Play Cell Feast">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span
-                                class="g-badge g-badge--genre">.io</span></div>
-                        <div class="g-card__icon">🦠</div>
-                        <h3 class="g-card__title">Cell Feast</h3>
-                        <p class="g-card__desc">Eat smaller cells, grow huge.</p>
-                        <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">io</span></div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                    <a href="cell-feast.html" class="g-card" data-genre="io" aria-label="Play Cell Feast">
-
-                        <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span
-                                class="g-badge g-badge--genre">Shooting</span></div>
-                        <div class="g-card__icon">🤠</div>
-                        <h3 class="g-card__title">Quick Draw</h3>
-                        <p class="g-card__desc">Draw when you see the signal.</p>
-                        <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Shooting</span>
-                        </div>
-                        <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ABOUT STRIP -->
+  <!-- ABOUT STRIP -->
         <section class="g-about">
             <div class="g-container">
                 <div class="g-about__grid">
                     <div class="g-about__stat">
-                        <span class="g-about__num">44</span>
+                        <span class="g-about__num">13</span>
                         <span class="g-about__label">Games Built</span>
                     </div>
                     <div class="g-about__stat">
@@ -506,7 +406,7 @@
         });
 
         /* ── Stat count-up ───────────────────────────────────────── */
-        const STATS = [44, 0, 0];
+        const STATS = [13, 0, 0];
         const statNums = document.querySelectorAll('.g-about__num');
         const statsObs = new IntersectionObserver((entries) => {
             entries.forEach(e => {

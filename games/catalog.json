@@ -1,38 +1,157 @@
 [
-  {"slug":"wordle","title":"Wordle","genre":"Word","icon":"🟩","desc":"Guess the 5-letter word in 6 tries.","tags":["DOM","Word"],"featured":true,"hot":true},
-  {"slug":"hangman","title":"Hangman","genre":"Word","icon":"🪢","desc":"Classic hangman with neon keyboard.","tags":["DOM","Word"]},
-  {"slug":"word-scramble","title":"Word Scramble","genre":"Word","icon":"🔤","desc":"Unscramble letters before time runs out.","tags":["DOM","Word"]},
-  {"slug":"snake","title":"Snake","genre":"Arcade","icon":"🐍","desc":"Neon snake with speed progression.","tags":["Canvas","Arcade"]},
-  {"slug":"tetris","title":"Tetris","genre":"Arcade","icon":"🧱","desc":"Seven tetrominoes, ghost piece, levels.","tags":["Canvas","Classic"],"featured":true,"hot":true},
-  {"slug":"flappy","title":"Flappy Bird","genre":"Arcade","icon":"🐦","desc":"Dodge pipes, beat your high score.","tags":["Canvas","Reflex"]},
-  {"slug":"breakout","title":"Breakout","genre":"Arcade","icon":"🧱","desc":"Brick breaker with power-ups.","tags":["Canvas","Arcade"]},
-  {"slug":"tower","title":"Building Tower","genre":"Arcade","icon":"🏗️","desc":"Stack blocks with perfect timing.","tags":["Canvas","Arcade"],"new":true},
-  {"slug":"gold-hook","title":"Gold Hook","genre":"Arcade","icon":"⛏️","desc":"Swing hook, grab gold, beat the clock.","tags":["Canvas","Arcade"],"new":true},
-  {"slug":"bubble-spin","title":"Bubble Spin","genre":"Arcade","icon":"🫧","desc":"Match bubbles on a spinning wheel.","tags":["Canvas","Arcade"],"new":true},
-  {"slug":"2048","title":"2048","genre":"Puzzle","icon":"⬛","desc":"Slide and merge tiles to 2048.","tags":["DOM","Puzzle"]},
-  {"slug":"block-roll","title":"Block Roll","genre":"Puzzle","icon":"📦","desc":"Roll the block onto the goal tile.","tags":["DOM","Puzzle"],"new":true},
-  {"slug":"tile-link","title":"Tile Link","genre":"Puzzle","icon":"🀄","desc":"Connect matching pairs with paths.","tags":["DOM","Puzzle"],"new":true},
-  {"slug":"memory","title":"Memory Match","genre":"Memory","icon":"🃏","desc":"Flip pairs before time runs out.","tags":["CSS 3D","Memory"],"new":true},
-  {"slug":"tictactoe","title":"Tic-Tac-Toe","genre":"Strategy","icon":"❌","desc":"Unbeatable minimax AI or two-player.","tags":["DOM","AI"]},
-  {"slug":"connect4","title":"Connect 4","genre":"Strategy","icon":"🔴","desc":"Drop discs, connect four in a row.","tags":["DOM","AI"],"new":true},
-  {"slug":"balloon-td","title":"Balloon TD","genre":"Strategy","icon":"🎈","desc":"Tower defense — pop the balloons.","tags":["Canvas","TD"],"new":true},
-  {"slug":"hex-conquest","title":"Hex Conquest","genre":"Strategy","icon":"⬡","desc":"Conquer hex territories with dice.","tags":["Canvas","Strategy"],"new":true},
-  {"slug":"space","title":"Space Shooter","genre":"Action","icon":"🚀","desc":"Blast aliens, grab power-ups.","tags":["Canvas","Action"],"featured":true,"new":true},
-  {"slug":"dino","title":"Dino Runner","genre":"Action","icon":"🦖","desc":"Endless runner — jump and duck.","tags":["Canvas","Action"],"new":true},
-  {"slug":"whack","title":"Whack-a-Mole","genre":"Skill","icon":"🔨","desc":"30-second reflex challenge.","tags":["DOM","Reflex"],"new":true},
-  {"slug":"pong","title":"Pong","genre":"Skill","icon":"🏓","desc":"Classic paddle vs AI to 7 points.","tags":["Canvas","AI"],"new":true},
-  {"slug":"dice-wars","title":"Dice Wars","genre":"Board","icon":"🎲","desc":"Roll dice, conquer territories.","tags":["Canvas","Board"],"new":true},
-  {"slug":"mix-master","title":"Mix Master","genre":"Card","icon":"🍹","desc":"Pour the perfect neon cocktail.","tags":["DOM","Card"],"new":true},
-  {"slug":"solitaire","title":"Solitaire","genre":"Card","icon":"🂡","desc":"Klondike solitaire, neon styled.","tags":["DOM","Card"],"new":true},
-  {"slug":"idle-farm","title":"Idle Farm","genre":"Clicker","icon":"🌾","desc":"Grow crops, buy upgrades, idle coins.","tags":["DOM","Clicker"],"new":true},
-  {"slug":"bull-run","title":"Bull Run","genre":"Driving","icon":"🐂","desc":"Dodge the bull — lane runner.","tags":["Canvas","Driving"],"new":true},
-  {"slug":"neon-drift","title":"Neon Drift","genre":"Driving","icon":"🏎️","desc":"Top-down lane dodge at speed.","tags":["Canvas","Driving"],"new":true},
-  {"slug":"cell-feast","title":"Cell Feast","genre":"io","icon":"🦠","desc":"Eat smaller cells, grow huge.","tags":["Canvas","io"],"new":true},
-  {"slug":"lane-defense","title":"Lane Defense","genre":"Shooting","icon":"🔫","desc":"Stop enemies marching down lanes.","tags":["Canvas","Shooting"],"new":true},
-  {"slug":"pizza-queue","title":"Pizza Queue","genre":"Simulation","icon":"🍕","desc":"Build pizzas to order under pressure.","tags":["DOM","Simulation"],"new":true},
-  {"slug":"diner-rush","title":"Diner Rush","genre":"Simulation","icon":"🍽️","desc":"Serve customers before they leave.","tags":["DOM","Simulation"],"new":true},
-  {"slug":"home-run","title":"Home Run","genre":"Sports","icon":"⚾","desc":"Time your swing for maximum hits.","tags":["Canvas","Sports"],"new":true},
-  {"slug":"neon-pool","title":"Neon Pool","genre":"Sports","icon":"🎱","desc":"8-ball pool with neon physics.","tags":["Canvas","Sports"],"new":true},
-  {"slug":"trick-quiz","title":"Trick Quiz","genre":"Trivia","icon":"❓","desc":"Tricky trivia — think outside the box.","tags":["DOM","Trivia"],"new":true},
-  {"slug":"brain-check","title":"Brain Check","genre":"Trivia","icon":"🧠","desc":"Quick brain teasers and logic.","tags":["DOM","Trivia"],"new":true}
+  {
+    "slug": "wordle",
+    "title": "Wordle",
+    "genre": "Word",
+    "icon": "🟩",
+    "desc": "Guess the 5-letter word in 6 tries.",
+    "tags": [
+      "DOM",
+      "Word"
+    ],
+    "featured": true,
+    "hot": true
+  },
+  {
+    "slug": "snake",
+    "title": "Snake",
+    "genre": "Arcade",
+    "icon": "🐍",
+    "desc": "Neon snake with speed progression.",
+    "tags": [
+      "Canvas",
+      "Arcade"
+    ]
+  },
+  {
+    "slug": "tetris",
+    "title": "Tetris",
+    "genre": "Arcade",
+    "icon": "🧱",
+    "desc": "Seven tetrominoes, ghost piece, levels.",
+    "tags": [
+      "Canvas",
+      "Classic"
+    ],
+    "featured": true,
+    "hot": true
+  },
+  {
+    "slug": "flappy",
+    "title": "Flappy Bird",
+    "genre": "Arcade",
+    "icon": "🐦",
+    "desc": "Dodge pipes, beat your high score.",
+    "tags": [
+      "Canvas",
+      "Reflex"
+    ]
+  },
+  {
+    "slug": "tower",
+    "title": "Building Tower",
+    "genre": "Arcade",
+    "icon": "🏗️",
+    "desc": "Stack blocks with perfect timing.",
+    "tags": [
+      "Canvas",
+      "Arcade"
+    ],
+    "new": true
+  },
+  {
+    "slug": "2048",
+    "title": "2048",
+    "genre": "Puzzle",
+    "icon": "⬛",
+    "desc": "Slide and merge tiles to 2048.",
+    "tags": [
+      "DOM",
+      "Puzzle"
+    ]
+  },
+  {
+    "slug": "memory",
+    "title": "Memory Match",
+    "genre": "Memory",
+    "icon": "🃏",
+    "desc": "Flip pairs before time runs out.",
+    "tags": [
+      "CSS 3D",
+      "Memory"
+    ],
+    "new": true
+  },
+  {
+    "slug": "tictactoe",
+    "title": "Tic-Tac-Toe",
+    "genre": "Strategy",
+    "icon": "❌",
+    "desc": "Unbeatable minimax AI or two-player.",
+    "tags": [
+      "DOM",
+      "AI"
+    ]
+  },
+  {
+    "slug": "connect4",
+    "title": "Connect 4",
+    "genre": "Strategy",
+    "icon": "🔴",
+    "desc": "Drop discs, connect four in a row.",
+    "tags": [
+      "DOM",
+      "AI"
+    ],
+    "new": true
+  },
+  {
+    "slug": "space",
+    "title": "Space Shooter",
+    "genre": "Action",
+    "icon": "🚀",
+    "desc": "Blast aliens, grab power-ups.",
+    "tags": [
+      "Canvas",
+      "Action"
+    ],
+    "featured": true,
+    "new": true
+  },
+  {
+    "slug": "whack",
+    "title": "Whack-a-Mole",
+    "genre": "Skill",
+    "icon": "🔨",
+    "desc": "30-second reflex challenge.",
+    "tags": [
+      "DOM",
+      "Reflex"
+    ],
+    "new": true
+  },
+  {
+    "slug": "pong",
+    "title": "Pong",
+    "genre": "Skill",
+    "icon": "🏓",
+    "desc": "Classic paddle vs AI to 7 points.",
+    "tags": [
+      "Canvas",
+      "AI"
+    ],
+    "new": true
+  },
+  {
+    "slug": "dice-wars",
+    "title": "Dice Wars",
+    "genre": "Board",
+    "icon": "🎲",
+    "desc": "Roll dice, conquer territories.",
+    "tags": [
+      "Canvas",
+      "Board"
+    ],
+    "new": true
+  }
 ]

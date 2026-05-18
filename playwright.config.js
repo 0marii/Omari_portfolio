@@ -8,7 +8,7 @@ export default defineConfig({
     headless: true,
   },
   webServer: {
-    command: 'python3 -m http.server 4173',
+    command: 'npx serve -p 4173',
     port: 4173,
     reuseExistingServer: !process.env.CI,
   },
