@@ -1,0 +1,36 @@
+# robots.txt — portfolio (host resolved at deploy via generate-sitemap.mjs)
+# Mohammed Al-Omari | Backend Software Engineer
+
+User-agent: *
+Allow: /
+Allow: /games/
+
+# Disallow source/config files
+Disallow: /vercel.json
+Disallow: /.git/
+Disallow: /.env
+Disallow: /.env.*
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bing
+User-agent: bingbot
+Allow: /
+Crawl-delay: 2
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Apple
+User-agent: Applebot
+Allow: /
+
+Sitemap: /sitemap.xml

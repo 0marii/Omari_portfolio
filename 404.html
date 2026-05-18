@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="robots" content="noindex"/>
+  <title>404 — Page Not Found | Mohammed Al-Omari</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --bg:#04040a; --text:#f0f0ff; --muted:#7878aa; --cyan:#22d3ee; --violet:#a855f7; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:"Inter",-apple-system,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;}
+    .code{font-family:"JetBrains Mono",monospace;font-size:clamp(5rem,15vw,8rem);font-weight:700;background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:1rem;}
+    h1{font-size:1.5rem;font-weight:600;margin-bottom:0.75rem;}
+    p{color:var(--muted);margin-bottom:2rem;max-width:380px;}
+    .links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+    a{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.4rem;border-radius:6px;font-family:"JetBrains Mono",monospace;font-size:.85rem;font-weight:600;text-decoration:none;transition:all .2s;}
+    .a-home{background:linear-gradient(135deg,var(--cyan),var(--violet));color:#000;}
+    .a-home:hover{filter:brightness(1.1);}
+    .a-games{border:1px solid rgba(168,85,247,.4);color:var(--violet);}
+    .a-games:hover{background:rgba(168,85,247,.1);}
+  </style>
+</head>
+<body>
+  <div>
+    <div class="code">404</div>
+    <h1>Page Not Found</h1>
+    <p>The page you're looking for doesn't exist. Head back to the portfolio or play a game.</p>
+    <div class="links">
+      <a href="index.html" class="a-home">← Back Home</a>
+      <a href="games/index.html" class="a-games">🎮 Play Games</a>
+    </div>
+  </div>
+</body>
+</html>
