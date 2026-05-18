@@ -419,7 +419,13 @@ ul, ol { list-style: none; }
   .g-hero__eyebrow { font-size: 0.65rem; }
 
   /* Filters horizontal scroll */
-  .g-filter { overflow-x: auto; padding-bottom: 0.5rem; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+  .g-filter {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 0 1rem 0.5rem;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
   .g-filter::-webkit-scrollbar { display: none; }
   .g-filter__btn { flex-shrink: 0; }
 
