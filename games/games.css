@@ -399,7 +399,7 @@ ul, ol { list-style: none; }
    ========================================================================== */
 @media (max-width: 768px) {
   .g-hero__title { font-size: clamp(3rem, 12vw, 5rem); }
-  .g-nav__links li:not(:first-child):not(:last-child) { display: none; }
+  .g-nav__links { display: none; }
   .g-float { display: none; }
 }
 
@@ -411,9 +411,8 @@ ul, ol { list-style: none; }
   .g-card__desc  { font-size: 0.85rem; }
 
   /* Compact nav */
-  .g-nav { padding: 0 1rem; }
-  .g-nav__inner { height: 52px; }
-  .g-nav__logo { font-size: 1.1rem; }
+  .g-nav { padding: 0 1rem; height: 54px; }
+  .g-brand__logo { font-size: 1.15rem; }
 
   /* Hero tighter */
   .g-hero { padding: 3rem 0 2rem; }

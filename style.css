@@ -997,9 +997,38 @@ body[data-cursor-state="card"] .cursor-ring { border-color: rgba(168,85,247,0.6)
 /* ==========================================================================
    Responsive
    ========================================================================== */
+@media (max-width: 768px) {
+  .float-badge { display: none; }
+  .hero__grid { gap: 2.5rem; }
+}
+
 @media (max-width: 480px) {
+  .container { padding: 0 1rem; }
   .section { padding: 5rem 0; }
-  .hero__actions { flex-direction: column; align-items: flex-start; }
+  .status-badge {
+    flex-wrap: wrap;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .hero__title {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    margin-bottom: 1.25rem;
+  }
+  .hero__bio {
+    margin-bottom: 1.75rem;
+  }
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .hero__actions .btn {
+    justify-content: center;
+  }
+  .code-window__body {
+    padding: 1rem;
+  }
   .contact__links { flex-direction: column; align-items: stretch; }
   .contact__links .btn { justify-content: center; }
   .back-to-top { bottom: 1rem; left: 1rem; right: auto; }
