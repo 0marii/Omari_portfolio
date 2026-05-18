@@ -1,0 +1,326 @@
+/* ==========================================================================
+   M.GAMES — Shared Game Chrome
+   Used by all 8 individual game pages
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+:root {
+  --g-bg:        #050510;
+  --g-surface:   #0c0c20;
+  --g-card:      #11112a;
+  --g-border:    #1e1e45;
+  --g-border-hi: rgba(99,102,241,0.4);
+  --g-text:      #f0f0ff;
+  --g-muted:     #7878aa;
+  --g-dark:      #44447a;
+  --g-primary:   #6366f1;
+  --g-accent:    #f59e0b;
+  --g-green:     #10b981;
+  --g-red:       #ef4444;
+  --g-grad:      linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+  --g-grad-text: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+  --g-sans: "Inter", -apple-system, sans-serif;
+  --g-mono: "JetBrains Mono", monospace;
+  --g-fast:   0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --g-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-x: hidden; }
+body {
+  font-family: var(--g-sans);
+  background: var(--g-bg);
+  color: var(--g-text);
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Game Header / Nav
+   ========================================================================== */
+.game-header {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(5,5,16,0.9); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--g-border);
+  padding: 0 1.5rem;
+}
+.game-header__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px; gap: 1rem;
+}
+.game-back {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--g-mono); font-size: 0.8rem; color: var(--g-muted);
+  border: 1px solid var(--g-border); border-radius: 100px;
+  padding: 0.3rem 0.85rem; transition: all var(--g-fast);
+  text-decoration: none; white-space: nowrap;
+}
+.game-back:hover { border-color: var(--g-primary); color: var(--g-primary); }
+.game-back svg { width: 14px; height: 14px; }
+
+.game-title {
+  font-family: var(--g-mono); font-weight: 700; font-size: 1rem;
+  background: var(--g-grad-text);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; letter-spacing: 0.02em;
+}
+
+.game-hud {
+  display: flex; align-items: center; gap: 1rem;
+}
+.hud-item {
+  display: flex; flex-direction: column; align-items: center;
+  background: var(--g-surface); border: 1px solid var(--g-border);
+  border-radius: 8px; padding: 0.3rem 0.75rem; min-width: 60px;
+}
+.hud-item__label {
+  font-family: var(--g-mono); font-size: 0.6rem; color: var(--g-muted);
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
+.hud-item__value {
+  font-family: var(--g-mono); font-size: 1rem; font-weight: 700;
+  background: var(--g-grad-text);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1.2;
+}
+
+/* ==========================================================================
+   Game Area
+   ========================================================================== */
+.game-main {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-start;
+  padding: 2rem 1rem;
+  position: relative;
+}
+
+/* ==========================================================================
+   Win / Lose Overlay
+   ========================================================================== */
+.game-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(5,5,16,0.92); backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--g-smooth);
+}
+.game-overlay.visible { opacity: 1; pointer-events: auto; }
+
+.game-overlay__box {
+  background: var(--g-card); border: 1px solid var(--g-border-hi);
+  border-radius: 24px; padding: 2.5rem 2rem;
+  text-align: center; max-width: 380px; width: 90%;
+  transform: scale(0.9); transition: transform var(--g-smooth);
+  box-shadow: 0 40px 80px -20px rgba(0,0,0,.8);
+}
+.game-overlay.visible .game-overlay__box { transform: scale(1); }
+
+.game-overlay__emoji { font-size: 3.5rem; margin-bottom: 0.75rem; display: block; }
+.game-overlay__title {
+  font-size: 2rem; font-weight: 900; letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+.game-overlay__title--win  { background: var(--g-grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.game-overlay__title--lose { color: var(--g-red); }
+.game-overlay__sub { font-size: 0.95rem; color: var(--g-muted); margin-bottom: 1.75rem; line-height: 1.6; }
+
+.game-overlay__score {
+  font-family: var(--g-mono); font-size: 1.5rem; font-weight: 700;
+  background: var(--g-grad-text); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 2rem; display: block;
+}
+
+.game-overlay__actions { display: flex; flex-direction: column; gap: 0.75rem; }
+
+/* ==========================================================================
+   Shared Buttons
+   ========================================================================== */
+.g-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.8rem 1.75rem; font-family: var(--g-mono); font-size: 0.88rem;
+  font-weight: 700; border-radius: 8px; cursor: pointer; border: none;
+  transition: all var(--g-fast); text-decoration: none; white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+.g-btn--primary {
+  background: var(--g-grad); color: #fff;
+  box-shadow: 0 0 20px rgba(99,102,241,0.35);
+}
+.g-btn--primary:hover { filter: brightness(1.1); transform: translateY(-2px); color: #fff; }
+
+.g-btn--outline {
+  background: transparent; color: var(--g-muted);
+  border: 1px solid var(--g-border);
+}
+.g-btn--outline:hover { border-color: var(--g-primary); color: var(--g-primary); }
+
+/* ==========================================================================
+   Game Controls Info
+   ========================================================================== */
+.game-controls {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem;
+  margin-top: 1.5rem; font-family: var(--g-mono); font-size: 0.78rem;
+  color: var(--g-muted);
+}
+.game-controls__key {
+  background: var(--g-surface); border: 1px solid var(--g-border);
+  border-radius: 6px; padding: 0.2rem 0.6rem;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+}
+
+/* ==========================================================================
+   Background noise (reused)
+   ========================================================================== */
+.g-noise {
+  position: fixed; inset: 0; pointer-events: none; z-index: 100; opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+
+/* ==========================================================================
+   Utility
+   ========================================================================== */
+.g-grad-text {
+  background: var(--g-grad-text);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0;
+}
+
+/* ==========================================================================
+   HUD Pop Animation (score change)
+   ========================================================================== */
+@keyframes hudPop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.35); color: var(--g-accent); }
+  100% { transform: scale(1); }
+}
+.hud-item__value.hud-pop {
+  animation: hudPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ==========================================================================
+   Interactive HUD Items
+   ========================================================================== */
+.hud-item {
+  transition: border-color var(--g-fast), box-shadow var(--g-fast), transform var(--g-fast);
+  cursor: default;
+}
+.hud-item:hover {
+  border-color: rgba(99,102,241,0.4);
+  box-shadow: 0 0 12px rgba(99,102,241,0.15);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Animated Overlay Buttons
+   ========================================================================== */
+.g-btn { position: relative; overflow: hidden; }
+.g-btn::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,0.06);
+  opacity: 0; transition: opacity var(--g-fast);
+}
+.g-btn:hover::after { opacity: 1; }
+.g-btn:active { transform: scale(0.97); }
+
+/* Ripple on game buttons */
+.g-btn .btn-ripple {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  width: 8px; height: 8px; margin: -4px;
+  background: rgba(255,255,255,0.3);
+  animation: gBtnRipple 0.5s ease forwards;
+}
+@keyframes gBtnRipple {
+  from { transform: scale(0); opacity: 1; }
+  to   { transform: scale(20); opacity: 0; }
+}
+
+/* ==========================================================================
+   Back Button Interactive
+   ========================================================================== */
+.game-back {
+  position: relative; overflow: hidden;
+}
+.game-back::before {
+  content: '←';
+  position: absolute; left: -20px;
+  opacity: 0; transition: all var(--g-fast);
+}
+.game-back:hover::before { left: 0.6rem; opacity: 0.5; }
+
+/* ==========================================================================
+   Game Title Gradient Pulse
+   ========================================================================== */
+.game-title {
+  animation: titlePulse 4s ease-in-out infinite alternate;
+}
+@keyframes titlePulse {
+  from { filter: brightness(1); }
+  to   { filter: brightness(1.2) drop-shadow(0 0 8px rgba(99,102,241,0.4)); }
+}
+
+/* ==========================================================================
+   Overlay box entrance
+   ========================================================================== */
+.game-overlay__box {
+  animation: none;
+}
+.game-overlay.visible .game-overlay__box {
+  animation: overlayEntrance 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes overlayEntrance {
+  from { transform: scale(0.85) translateY(20px); opacity: 0; }
+  to   { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* ==========================================================================
+   Responsive — phones
+   ========================================================================== */
+
+/* ≤ 600px — shrink header chrome */
+@media (max-width: 600px) {
+  .game-header { padding: 0 0.75rem; }
+  .game-header__inner { height: 52px; }
+  .game-back { font-size: 0.72rem; padding: 0.25rem 0.65rem; }
+  .game-title { font-size: 0.82rem; letter-spacing: 0.01em; }
+  .game-hud { gap: 0.4rem; }
+  .hud-item { min-width: 44px; padding: 0.22rem 0.45rem; }
+  .hud-item__label { font-size: 0.55rem; }
+  .hud-item__value { font-size: 0.88rem; }
+  .game-main { padding: 0.75rem 0.5rem; }
+  .g-btn { padding: 0.7rem 1.25rem; font-size: 0.82rem; }
+}
+
+/* ≤ 400px — extreme squeeze: hide title, keep back + hud */
+@media (max-width: 400px) {
+  .game-title { display: none; }
+  .hud-item { min-width: 38px; padding: 0.18rem 0.35rem; }
+  .hud-item__label { font-size: 0.5rem; }
+  .hud-item__value { font-size: 0.8rem; }
+}
+
+/* Show touch hint, hide keyboard hint on touch devices */
+@media (pointer: coarse) {
+  .game-controls__key--kb { display: none; }
+  .game-controls__key--touch { display: inline-flex !important; }
+}
+
+/* ==========================================================================
+   Touch-device helpers
+   ========================================================================== */
+/* Add this class to touch-only hint spans in HTML */
+.game-controls__key--touch { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

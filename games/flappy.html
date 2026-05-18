@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content=""/>
+  <meta name="author" content="Mohammed Al-Omari"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="/games/flappy"/>
+  <meta property="og:title" content="Flappy Bird — M.GAMES"/>
+  <meta property="og:description" content=""/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="/games/flappy"/>
+  <link rel="icon" type="image/png" href="/Images/logo.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flappy Bird — M.Games</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .game-main {
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 1rem;
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      width: 360px;
+      max-width: 100%;
+    }
+
+    #flappyCanvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--g-border-hi);
+      border-radius: 8px;
+      box-shadow:
+        0 0 40px rgba(99,102,241,0.18),
+        0 0 80px rgba(99,102,241,0.07);
+      touch-action: none;
+      cursor: pointer;
+    }
+
+    .flappy-hint {
+      text-align: center;
+      margin-top: 0.85rem;
+      font-family: var(--g-mono);
+      font-size: 0.75rem;
+      color: var(--g-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .flappy-hint .ctrl-key {
+      background: var(--g-surface);
+      border: 1px solid var(--g-border);
+      border-radius: 5px;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.7rem;
+    }
+
+    @media (max-width: 480px) {
+      .game-main { padding: 0.75rem 0.25rem; }
+      .flappy-hint { font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="g-noise" aria-hidden="true"></div>
+
+  <header class="game-header">
+    <div class="game-header__inner">
+      <a href="index.html" class="game-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back
+      </a>
+
+      <span class="game-title">FLAPPY BIRD</span>
+
+      <div class="game-hud">
+        <div class="hud-item">
+          <span class="hud-item__label">Score</span>
+          <span class="hud-item__value" id="hudScore">0</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-item__label">Best</span>
+          <span class="hud-item__value" id="hudBest">0</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="game-main">
+    <div class="canvas-wrapper">
+      <canvas id="flappyCanvas" width="360" height="600" aria-label="Flappy Bird game canvas"></canvas>
+    </div>
+    <div class="flappy-hint">
+      <span class="ctrl-key game-controls__key--kb">Space</span>
+      <span class="game-controls__key--kb"> or </span>
+      <span class="game-controls__key--touch" style="display:none">👆 </span>
+      Tap to flap
+    </div>
+  </main>
+
+  <script src="flappy.js"></script>
+<script src="game-ui.js"></script>
+</body>
+</html>

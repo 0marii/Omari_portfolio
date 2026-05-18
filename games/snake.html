@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content=""/>
+  <meta name="author" content="Mohammed Al-Omari"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="/games/snake"/>
+  <meta property="og:title" content="Snake — M.GAMES"/>
+  <meta property="og:description" content=""/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="/games/snake"/>
+  <link rel="icon" type="image/png" href="/Images/logo.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snake — M.Games</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* ── Canvas wrapper ───────────────────────────────────── */
+    #canvasWrapper {
+      position: relative;
+      display: inline-block;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--g-border);
+      box-shadow: 0 0 40px rgba(99, 102, 241, 0.1);
+      max-width: 100%;
+    }
+
+    #snakeCanvas {
+      display: block;
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    /* ── Start Screen ────────────────────────────────────── */
+    #startScreen {
+      position: absolute;
+      inset: 0;
+      background: rgba(5, 5, 16, 0.88);
+      backdrop-filter: blur(6px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      border-radius: 10px;
+      transition: opacity 0.3s;
+    }
+
+    #startScreen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #startScreen .start-emoji {
+      font-size: 3rem;
+    }
+
+    #startScreen .start-title {
+      font-family: var(--g-mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: var(--g-grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    #startScreen .start-hint {
+      font-family: var(--g-mono);
+      font-size: 0.82rem;
+      color: var(--g-muted);
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    #startScreen .g-btn {
+      margin-top: 0.5rem;
+    }
+
+    /* ── D-pad (mobile only) ─────────────────────────────── */
+    #dpad {
+      display: none;
+      grid-template-columns: repeat(3, 64px);
+      grid-template-rows: repeat(3, 64px);
+      gap: 6px;
+      margin-top: 1rem;
+    }
+
+    @media (pointer: coarse) {
+      #dpad { display: grid; }
+    }
+
+    .dpad-btn {
+      width: 64px;
+      height: 64px;
+      background: var(--g-surface);
+      border: 1px solid var(--g-border);
+      border-radius: 14px;
+      color: var(--g-text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.1s, border-color 0.1s, transform 0.1s;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    .dpad-btn:active {
+      background: rgba(99,102,241,0.15);
+      border-color: var(--g-primary);
+      transform: scale(0.92);
+    }
+
+    /* Swipe hint for mobile */
+    .swipe-hint {
+      display: none;
+      font-family: var(--g-mono);
+      font-size: 0.7rem;
+      color: var(--g-muted);
+      text-align: center;
+      margin-top: 0.4rem;
+      opacity: 0.65;
+    }
+    @media (pointer: coarse) {
+      .swipe-hint { display: block; }
+    }
+
+    /* Positions in the 3×3 grid */
+    #btnUp    { grid-column: 2; grid-row: 1; }
+    #btnLeft  { grid-column: 1; grid-row: 2; }
+    #btnRight { grid-column: 3; grid-row: 2; }
+    #btnDown  { grid-column: 2; grid-row: 3; }
+
+    /* ── Overlay sub-content ─────────────────────────────── */
+    #goScores {
+      font-family: var(--g-mono);
+      font-size: 0.9rem;
+      color: var(--g-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    #goScores span {
+      color: var(--g-text);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="g-noise" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="game-header">
+    <div class="game-header__inner">
+      <a href="index.html" class="game-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back
+      </a>
+      <span class="game-title">SNAKE</span>
+      <div class="game-hud">
+        <div class="hud-item">
+          <span class="hud-item__label">Score</span>
+          <span class="hud-item__value" id="hudScore">0</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-item__label">Best</span>
+          <span class="hud-item__value" id="hudBest">0</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-item__label">Level</span>
+          <span class="hud-item__value" id="hudLevel">1</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="game-main">
+    <div id="canvasWrapper">
+      <canvas id="snakeCanvas" aria-label="Snake game canvas" role="img"></canvas>
+
+      <!-- Start Screen -->
+      <div id="startScreen">
+        <span class="start-emoji">🐍</span>
+        <span class="start-title">SNAKE</span>
+        <p class="start-hint">Use arrow keys or WASD to move.<br>Eat the food, don't hit the walls!</p>
+        <button class="g-btn g-btn--primary" id="startBtn">Start Game</button>
+      </div>
+    </div>
+
+    <!-- Mobile D-pad -->
+    <div id="dpad" aria-label="Direction controls">
+      <button class="dpad-btn" id="btnUp"    aria-label="Up">▲</button>
+      <button class="dpad-btn" id="btnLeft"  aria-label="Left">◀</button>
+      <button class="dpad-btn" id="btnRight" aria-label="Right">▶</button>
+      <button class="dpad-btn" id="btnDown"  aria-label="Down">▼</button>
+    </div>
+    <p class="swipe-hint">Swipe on board or use D-pad</p>
+  </main>
+
+  <!-- Game Over Overlay -->
+  <div class="game-overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="overlayTitle">
+    <div class="game-overlay__box">
+      <span class="game-overlay__emoji">💀</span>
+      <div class="game-overlay__title game-overlay__title--lose" id="overlayTitle">Game Over</div>
+      <div id="goScores" class="game-overlay__sub">
+        Score: <span id="goScore">0</span> &nbsp;·&nbsp; Best: <span id="goBest">0</span>
+      </div>
+      <div class="game-overlay__sub" id="goLevel">Level reached: <strong>1</strong></div>
+      <div class="game-overlay__actions">
+        <button class="g-btn g-btn--primary" id="playAgainBtn">Play Again</button>
+        <a href="index.html" class="g-btn g-btn--outline">← Back to Games</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="snake.js"></script>
+<script src="game-ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content=""/>
+  <meta name="author" content="Mohammed Al-Omari"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="/games/breakout"/>
+  <meta property="og:title" content="Breakout — M.GAMES"/>
+  <meta property="og:description" content=""/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="/games/breakout"/>
+  <link rel="icon" type="image/png" href="/Images/logo.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breakout — M.Games</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .game-main {
+      padding: 1.5rem 1rem;
+      gap: 1rem;
+    }
+
+    .canvas-wrap {
+      position: relative;
+      width: 480px;
+      max-width: 100%;
+      aspect-ratio: 480 / 560;
+    }
+
+    #breakoutCanvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--g-border);
+      box-shadow: 0 0 60px rgba(99,102,241,0.15);
+      cursor: none;
+    }
+
+    /* Start / Pause overlay on canvas */
+    .canvas-msg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: rgba(5,5,16,0.72);
+      backdrop-filter: blur(6px);
+      border-radius: 12px;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .canvas-msg.hidden { opacity: 0; pointer-events: none; }
+    .canvas-msg__icon { font-size: 2.5rem; }
+    .canvas-msg__title {
+      font-family: var(--g-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      background: var(--g-grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .canvas-msg__sub {
+      font-family: var(--g-mono);
+      font-size: 0.78rem;
+      color: var(--g-muted);
+    }
+
+    /* Win / Lose overlays */
+    .game-overlay__title--win {
+      background: var(--g-grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hi-score-note {
+      font-family: var(--g-mono);
+      font-size: 0.75rem;
+      color: var(--g-muted);
+      margin-top: -1rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="g-noise" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="game-header">
+    <div class="game-header__inner">
+      <a href="index.html" class="game-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back
+      </a>
+      <span class="game-title">BREAKOUT</span>
+      <div class="game-hud">
+        <div class="hud-item">
+          <span class="hud-item__label">Score</span>
+          <span class="hud-item__value" id="hudScore">0</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-item__label">Best</span>
+          <span class="hud-item__value" id="hudBest">0</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-item__label">Lives</span>
+          <span class="hud-item__value" id="hudLives">3</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-item__label">Level</span>
+          <span class="hud-item__value" id="hudLevel">1</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="game-main">
+    <div class="canvas-wrap">
+      <canvas id="breakoutCanvas" width="480" height="560" aria-label="Breakout game canvas"></canvas>
+
+      <!-- IDLE message -->
+      <div class="canvas-msg" id="idleMsg">
+        <span class="canvas-msg__icon">🕹️</span>
+        <span class="canvas-msg__title">BREAKOUT</span>
+        <span class="canvas-msg__sub">Click or tap to launch the ball</span>
+      </div>
+    </div>
+
+    <div class="game-controls">
+      <span class="game-controls__key">🖱️ Mouse / Touch — Move paddle</span>
+      <span class="game-controls__key">Click / Tap — Launch ball</span>
+    </div>
+  </main>
+
+  <!-- Win Overlay -->
+  <div class="game-overlay" id="winOverlay" role="dialog" aria-modal="true" aria-label="You win">
+    <div class="game-overlay__box">
+      <span class="game-overlay__emoji">🎉</span>
+      <h2 class="game-overlay__title game-overlay__title--win" id="winTitle">YOU WIN!</h2>
+      <p class="game-overlay__sub" id="winSub">All bricks cleared!</p>
+      <span class="game-overlay__score" id="winScore"></span>
+      <p class="hi-score-note" id="winHiNote"></p>
+      <div class="game-overlay__actions">
+        <button class="g-btn g-btn--primary" id="winNextBtn">Next Level</button>
+        <button class="g-btn g-btn--outline" id="winRestartBtn">Restart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lose Overlay -->
+  <div class="game-overlay" id="loseOverlay" role="dialog" aria-modal="true" aria-label="Game over">
+    <div class="game-overlay__box">
+      <span class="game-overlay__emoji">💀</span>
+      <h2 class="game-overlay__title game-overlay__title--lose">GAME OVER</h2>
+      <p class="game-overlay__sub">You ran out of lives.</p>
+      <span class="game-overlay__score" id="loseScore"></span>
+      <p class="hi-score-note" id="loseHiNote"></p>
+      <div class="game-overlay__actions">
+        <button class="g-btn g-btn--primary" id="loseRestartBtn">Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="breakout.js"></script>
+<script src="game-ui.js"></script>
+</body>
+</html>

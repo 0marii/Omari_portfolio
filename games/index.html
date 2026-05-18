@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="M.GAMES by Mohammed Al-Omari — Play 14 free browser games: Wordle, Snake, Tetris, 2048, Tower Build, Connect 4, Flappy Bird, Breakout, Memory, Tic-Tac-Toe, Space Shooter, Dino Runner, Whack-a-Mole, Pong. Vanilla JS, zero ads."/>
+  <meta name="keywords" content="browser games, tower building, connect four, action games, skill games, arcade games, wordle, snake, tetris, 2048, flappy bird, breakout, memory match, tic tac toe, space shooter, dino runner, whack a mole, pong, Mohammed Al-Omari"/>
+  <meta name="author" content="Mohammed Al-Omari"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="/games/"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="/games/"/>
+  <meta property="og:title" content="M.GAMES — 14 Free Browser Games"/>
+  <meta property="og:description" content="Play Tower Build, Connect 4, Wordle, Tetris, Snake, Space Shooter, and more. Vanilla JS. No ads."/>
+  <meta property="og:image" content="/Images/logo.png"/>
+  <meta property="og:image:width" content="512"/>
+  <meta property="og:image:height" content="512"/>
+  <meta property="og:image:type" content="image/png"/>
+  <meta property="og:site_name" content="M.GAMES"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="M.GAMES — 14 Free Browser Games"/>
+  <meta name="twitter:description" content="Tower Build, Connect 4, Wordle, Tetris, and more. Free, no ads."/>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "M.GAMES",
+    "url": "/games/",
+    "description": "Free browser games built with Vanilla JS by Mohammed Al-Omari",
+    "author": { "@type": "Person", "name": "Mohammed Al-Omari" }
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI"
+    crossorigin="anonymous"/>
+
+  <link rel="stylesheet" href="games.css"/>
+  <link rel="icon" type="image/png" href="/Images/logo.png"/>
+  <title>M.GAMES — 44 Free Browser Games</title>
+</head>
+<body>
+
+<!-- Loader -->
+<div class="g-loader" id="gLoader" aria-hidden="true">
+  <div class="g-loader__text">M.GAMES</div>
+</div>
+
+<!-- Background FX -->
+<div class="g-noise" aria-hidden="true"></div>
+<div class="g-mesh" aria-hidden="true"></div>
+
+<!-- Header -->
+<header class="g-header">
+  <nav class="g-nav g-container">
+    <a href="index.html" class="g-brand" aria-label="M.GAMES Home">
+      <span class="g-brand__logo">M<span class="g-brand__dot">.</span>GAMES</span>
+    </a>
+    <ul class="g-nav__links" role="list">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="#catalog">Games</a></li>
+      <li><a href="https://github.com/0marii" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a></li>
+    </ul>
+    <a href="../index.html" class="g-back-link">
+      <i class="fa-solid fa-arrow-left"></i> Portfolio
+    </a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="g-hero">
+    <div class="g-container">
+      <div class="g-hero__badge">
+        <span class="g-dot"></span> 44 Games · Zero Ads · Vanilla JS</div>
+      <h1 class="g-hero__title">
+        <span class="g-hero__title-line">Play.</span>
+        <span class="g-hero__title-line g-grad">Build. Ship.</span>
+      </h1>
+      <p class="g-hero__sub">
+        Browser games crafted from scratch — no frameworks, no shortcuts, no dark patterns.
+        Just clean code and good gameplay.
+      </p>
+      <a href="#catalog" class="g-btn g-btn--primary">
+        <i class="fa-solid fa-gamepad"></i> Browse All Games
+      </a>
+    </div>
+
+    <!-- Floating game icons -->
+    <div class="g-hero__floats" aria-hidden="true">
+      <div class="g-float g-float--1">🟩</div>
+      <div class="g-float g-float--2">🐍</div>
+      <div class="g-float g-float--3">🧱</div>
+      <div class="g-float g-float--4">🃏</div>
+      <div class="g-float g-float--5">🐦</div>
+      <div class="g-float g-float--6">⬛</div>
+      <div class="g-float g-float--7">🏓</div>
+      <div class="g-float g-float--8">❌</div>
+    </div>
+  </section>
+
+  <!-- CATALOG -->
+  <section id="catalog" class="g-catalog">
+    <div class="g-container">
+      <div class="g-catalog__header">
+        <span class="g-label">All Games</span>
+        <h2 class="g-section-title">Choose Your Game</h2>
+        <p class="g-section-sub">44 browser games, each built with care. Instant play, no sign-up.</p>
+        <!-- Genre Filter -->
+        <div class="g-filter" role="group" aria-label="Filter by genre">
+          <button class="g-filter__btn active" data-filter="all">All</button>
+          <button class="g-filter__btn" data-filter="Action">Action</button>
+          <button class="g-filter__btn" data-filter="Adventure">Adventure</button>
+          <button class="g-filter__btn" data-filter="Arcade">Arcade</button>
+          <button class="g-filter__btn" data-filter="Board">Board</button>
+          <button class="g-filter__btn" data-filter="Card">Card</button>
+          <button class="g-filter__btn" data-filter="Clicker">Clicker</button>
+          <button class="g-filter__btn" data-filter="Driving">Driving</button>
+          <button class="g-filter__btn" data-filter="io">.io</button>
+          <button class="g-filter__btn" data-filter="Puzzle">Puzzle</button>
+          <button class="g-filter__btn" data-filter="Shooting">Shooting</button>
+          <button class="g-filter__btn" data-filter="Simulation">Simulation</button>
+          <button class="g-filter__btn" data-filter="Sports">Sports</button>
+          <button class="g-filter__btn" data-filter="Strategy">Strategy</button>
+          <button class="g-filter__btn" data-filter="Trivia">Trivia</button>
+          <button class="g-filter__btn" data-filter="Word">Word</button>
+          <button class="g-filter__btn" data-filter="Memory">Memory</button>
+          <button class="g-filter__btn" data-filter="Skill">Skill</button>
+        </div>
+      </div>
+
+      <div class="g-grid">
+
+<a href="wordle.html" class="g-card g-card--featured g-card--has-thumb" data-genre="Word" aria-label="Play Wordle">
+          <div class="g-card__thumb"><img src="../Images/wordle-game.jpg" alt="Wordle" loading="lazy" class="g-card__thumb-img"/><div class="g-card__thumb-veil"></div></div>
+          <div class="g-card__badges"><span class="g-badge g-badge--hot">HOT</span><span class="g-badge g-badge--genre">Word</span></div>
+          <div class="g-card__icon">🟩</div>
+          <h3 class="g-card__title">Wordle</h3>
+          <p class="g-card__desc">Guess the 5-letter word in 6 tries.</p>
+          <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">Word</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="hangman.html" class="g-card" data-genre="Word" aria-label="Play Hangman">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--genre">Word</span></div>
+          <div class="g-card__icon">🪢</div>
+          <h3 class="g-card__title">Hangman</h3>
+          <p class="g-card__desc">Classic hangman with neon keyboard.</p>
+          <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">Word</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="word-scramble.html" class="g-card" data-genre="Word" aria-label="Play Word Scramble">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--genre">Word</span></div>
+          <div class="g-card__icon">🔤</div>
+          <h3 class="g-card__title">Word Scramble</h3>
+          <p class="g-card__desc">Unscramble letters before time runs out.</p>
+          <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">Word</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="snake.html" class="g-card" data-genre="Arcade" aria-label="Play Snake">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--genre">Arcade</span></div>
+          <div class="g-card__icon">🐍</div>
+          <h3 class="g-card__title">Snake</h3>
+          <p class="g-card__desc">Neon snake with speed progression.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Arcade</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="tetris.html" class="g-card g-card--featured" data-genre="Arcade" aria-label="Play Tetris">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--hot">HOT</span><span class="g-badge g-badge--genre">Arcade</span></div>
+          <div class="g-card__icon">🧱</div>
+          <h3 class="g-card__title">Tetris</h3>
+          <p class="g-card__desc">Seven tetrominoes, ghost piece, levels.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Classic</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="flappy.html" class="g-card" data-genre="Arcade" aria-label="Play Flappy Bird">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--genre">Arcade</span></div>
+          <div class="g-card__icon">🐦</div>
+          <h3 class="g-card__title">Flappy Bird</h3>
+          <p class="g-card__desc">Dodge pipes, beat your high score.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Reflex</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="breakout.html" class="g-card" data-genre="Arcade" aria-label="Play Breakout">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--genre">Arcade</span></div>
+          <div class="g-card__icon">🧱</div>
+          <h3 class="g-card__title">Breakout</h3>
+          <p class="g-card__desc">Brick breaker with power-ups.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Arcade</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="tower.html" class="g-card" data-genre="Arcade" aria-label="Play Building Tower">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Arcade</span></div>
+          <div class="g-card__icon">🏗️</div>
+          <h3 class="g-card__title">Building Tower</h3>
+          <p class="g-card__desc">Stack blocks with perfect timing.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Arcade</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="2048.html" class="g-card" data-genre="Puzzle" aria-label="Play 2048">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--genre">Puzzle</span></div>
+          <div class="g-card__icon">⬛</div>
+          <h3 class="g-card__title">2048</h3>
+          <p class="g-card__desc">Slide and merge tiles to 2048.</p>
+          <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">Puzzle</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="memory.html" class="g-card" data-genre="Memory" aria-label="Play Memory Match">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Memory</span></div>
+          <div class="g-card__icon">🃏</div>
+          <h3 class="g-card__title">Memory Match</h3>
+          <p class="g-card__desc">Flip pairs before time runs out.</p>
+          <div class="g-card__meta"><span class="g-tag">CSS 3D</span><span class="g-tag">Memory</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="tictactoe.html" class="g-card" data-genre="Strategy" aria-label="Play Tic-Tac-Toe">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--genre">Strategy</span></div>
+          <div class="g-card__icon">❌</div>
+          <h3 class="g-card__title">Tic-Tac-Toe</h3>
+          <p class="g-card__desc">Unbeatable minimax AI or two-player.</p>
+          <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">AI</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="connect4.html" class="g-card" data-genre="Strategy" aria-label="Play Connect 4">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Strategy</span></div>
+          <div class="g-card__icon">🔴</div>
+          <h3 class="g-card__title">Connect 4</h3>
+          <p class="g-card__desc">Drop discs, connect four in a row.</p>
+          <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">AI</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="space.html" class="g-card g-card--featured" data-genre="Action" aria-label="Play Space Shooter">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Action</span></div>
+          <div class="g-card__icon">🚀</div>
+          <h3 class="g-card__title">Space Shooter</h3>
+          <p class="g-card__desc">Blast aliens, grab power-ups.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Action</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="dino.html" class="g-card" data-genre="Action" aria-label="Play Dino Runner">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Action</span></div>
+          <div class="g-card__icon">🦖</div>
+          <h3 class="g-card__title">Dino Runner</h3>
+          <p class="g-card__desc">Endless runner — jump and duck.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Action</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="whack.html" class="g-card" data-genre="Skill" aria-label="Play Whack-a-Mole">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Skill</span></div>
+          <div class="g-card__icon">🔨</div>
+          <h3 class="g-card__title">Whack-a-Mole</h3>
+          <p class="g-card__desc">30-second reflex challenge.</p>
+          <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">Reflex</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="pong.html" class="g-card" data-genre="Skill" aria-label="Play Pong">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Skill</span></div>
+          <div class="g-card__icon">🏓</div>
+          <h3 class="g-card__title">Pong</h3>
+          <p class="g-card__desc">Classic paddle vs AI to 7 points.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">AI</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="dice-wars.html" class="g-card" data-genre="Board" aria-label="Play Dice Wars">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Board</span></div>
+          <div class="g-card__icon">🎲</div>
+          <h3 class="g-card__title">Dice Wars</h3>
+          <p class="g-card__desc">Roll dice, conquer territories.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Board</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="cell-feast.html" class="g-card" data-genre="io" aria-label="Play Cell Feast">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Clicker</span></div>
+          <div class="g-card__icon">🏝️</div>
+          <h3 class="g-card__title">Click Island</h3>
+          <p class="g-card__desc">Sequence puzzle — click to evolve.</p>
+          <div class="g-card__meta"><span class="g-tag">DOM</span><span class="g-tag">Clicker</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="cell-feast.html" class="g-card" data-genre="io" aria-label="Play Cell Feast">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">.io</span></div>
+          <div class="g-card__icon">🦠</div>
+          <h3 class="g-card__title">Cell Feast</h3>
+          <p class="g-card__desc">Eat smaller cells, grow huge.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">io</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+<a href="cell-feast.html" class="g-card" data-genre="io" aria-label="Play Cell Feast">
+          
+          <div class="g-card__badges"><span class="g-badge g-badge--new">NEW</span><span class="g-badge g-badge--genre">Shooting</span></div>
+          <div class="g-card__icon">🤠</div>
+          <h3 class="g-card__title">Quick Draw</h3>
+          <p class="g-card__desc">Draw when you see the signal.</p>
+          <div class="g-card__meta"><span class="g-tag">Canvas</span><span class="g-tag">Shooting</span></div>
+          <div class="g-card__play">Play Now <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT STRIP -->
+  <section class="g-about">
+    <div class="g-container">
+      <div class="g-about__grid">
+        <div class="g-about__stat">
+          <span class="g-about__num">44</span>
+          <span class="g-about__label">Games Built</span>
+        </div>
+        <div class="g-about__stat">
+          <span class="g-about__num">0</span>
+          <span class="g-about__label">Ads</span>
+        </div>
+        <div class="g-about__stat">
+          <span class="g-about__num">0</span>
+          <span class="g-about__label">Frameworks Used</span>
+        </div>
+        <div class="g-about__stat">
+          <span class="g-about__num">∞</span>
+          <span class="g-about__label">Fun</span>
+        </div>
+      </div>
+      <p class="g-about__text">
+        Every game here was written from scratch in Vanilla JS — no game engines, no React, no jQuery.
+        Just the platform APIs: Canvas 2D, DOM, requestAnimationFrame, and localStorage.
+        Clean code. Real craft.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="g-footer">
+  <div class="g-container">
+    <div class="g-footer__inner">
+      <a href="index.html" class="g-brand">
+        <span class="g-brand__logo">M<span class="g-brand__dot">.</span>GAMES</span>
+      </a>
+      <div class="g-footer__links">
+        <a href="https://github.com/0marii" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+        <a href="../index.html">← Back to Portfolio</a>
+      </div>
+    </div>
+    <p class="g-footer__copy">&copy; 2026 Mohammed Al-Omari · Built with Vanilla JS · No ads, no tracking</p>
+  </div>
+</footer>
+
+<script>
+  'use strict';
+
+  /* ── Loader ──────────────────────────────────────────────── */
+  window.addEventListener('load', () => {
+    const l = document.getElementById('gLoader');
+    setTimeout(() => { l.style.opacity = '0'; setTimeout(() => { if(l.parentNode) l.remove(); }, 400); }, 600);
+  });
+
+  /* ── Card reveal on scroll ───────────────────────────────── */
+  const allCards = document.querySelectorAll('.g-card, .g-about__stat');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.g-card').forEach((c, i) => {
+    c.style.transitionDelay = (i * 0.07) + 's';
+    revealObs.observe(c);
+  });
+  document.querySelectorAll('.g-about__stat').forEach((c, i) => {
+    c.style.transitionDelay = (i * 0.1) + 's';
+    revealObs.observe(c);
+  });
+
+  /* ── Card glow (desktop) ─────────────────────────────────── */
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll('.g-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top)  + 'px');
+      });
+    });
+  }
+
+  /* ── Genre Filter — matching games move to front ─────────── */
+  const filterBtns = document.querySelectorAll('.g-filter__btn');
+  const grid       = document.querySelector('.g-grid');
+  const gameCards  = Array.from(document.querySelectorAll('.g-card'));
+  const originalOrder = [...gameCards];
+
+  function applyGenreFilter(genre) {
+    const sorted = [...originalOrder].sort((a, b) => {
+      if (genre === 'all') return originalOrder.indexOf(a) - originalOrder.indexOf(b);
+      const aMatch = a.dataset.genre === genre;
+      const bMatch = b.dataset.genre === genre;
+      if (aMatch === bMatch) return originalOrder.indexOf(a) - originalOrder.indexOf(b);
+      return aMatch ? -1 : 1;
+    });
+
+    sorted.forEach((card) => grid.appendChild(card));
+
+    sorted.forEach((card, i) => {
+      const match = genre === 'all' || card.dataset.genre === genre;
+      card.style.transitionDelay = match ? (i * 0.05) + 's' : '0s';
+      card.style.opacity       = match ? '' : '0.2';
+      card.style.transform     = match ? '' : 'scale(0.95)';
+      card.style.pointerEvents = match ? '' : 'none';
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyGenreFilter(btn.dataset.filter);
+    });
+  });
+
+  /* ── Card click ripple ───────────────────────────────────── */
+  gameCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      const r = card.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      ripple.style.cssText = `
+        position:absolute;border-radius:50%;pointer-events:none;
+        width:10px;height:10px;
+        left:${e.clientX - r.left - 5}px;top:${e.clientY - r.top - 5}px;
+        background:rgba(99,102,241,0.35);
+        animation:gRipple 0.55s cubic-bezier(0.4,0,0.2,1) forwards;
+      `;
+      card.style.position = card.style.position || 'relative';
+      card.style.overflow = 'hidden';
+      card.appendChild(ripple);
+      ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
+    });
+  });
+
+  /* ── Stat count-up ───────────────────────────────────────── */
+  const STATS = [44, 0, 0];
+  const statNums = document.querySelectorAll('.g-about__num');
+  const statsObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const idx = Array.from(statNums).indexOf(e.target);
+      const target = STATS[idx];
+      if (target === undefined || e.target.textContent === '∞') return;
+      statsObs.unobserve(e.target);
+      let start = null;
+      const dur = 1400;
+      const step = (ts) => {
+        if (!start) start = ts;
+        const p = Math.min((ts - start) / dur, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        e.target.textContent = Math.round(target * ease);
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.5 });
+  statNums.forEach(n => { if (n.textContent !== '∞') statsObs.observe(n); });
+
+  /* ── Nav active link ─────────────────────────────────────── */
+  const catalog = document.getElementById('catalog');
+  if (catalog) {
+    const catObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        const link = document.querySelector('.g-nav__links a[href="#catalog"]');
+        if (link) link.classList.toggle('active', e.isIntersecting);
+      });
+    }, { threshold: 0.3 });
+    catObs.observe(catalog);
+  }
+
+  /* ── Scroll progress bar ─────────────────────────────────── */
+  const prog = document.createElement('div');
+  prog.style.cssText = 'position:fixed;top:0;left:0;right:0;height:3px;z-index:9999;background:linear-gradient(90deg,#6366f1,#ec4899);transform:scaleX(0);transform-origin:left;transition:transform 0.1s linear;box-shadow:0 0 8px rgba(99,102,241,0.6);';
+  prog.setAttribute('aria-hidden','true');
+  document.body.appendChild(prog);
+  document.addEventListener('scroll', () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+  }, { passive: true });
+
+  /* ── Back to top ─────────────────────────────────────────── */
+  const btt = document.createElement('button');
+  btt.setAttribute('aria-label','Back to top');
+  btt.style.cssText = 'position:fixed;bottom:2rem;right:2rem;z-index:500;width:44px;height:44px;border-radius:50%;background:var(--g-card);border:1px solid var(--g-border);color:var(--g-muted);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:all 0.3s;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.4);';
+  btt.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg>';
+  document.body.appendChild(btt);
+  document.addEventListener('scroll', () => {
+    const show = window.scrollY > 400;
+    btt.style.opacity = show ? '1' : '0';
+    btt.style.pointerEvents = show ? 'auto' : 'none';
+  }, { passive: true });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  btt.addEventListener('mouseenter', () => { btt.style.background='linear-gradient(135deg,#6366f1,#ec4899)'; btt.style.color='#fff'; btt.style.borderColor='transparent'; btt.style.transform='translateY(-4px)'; });
+  btt.addEventListener('mouseleave', () => { btt.style.background=''; btt.style.color=''; btt.style.borderColor=''; btt.style.transform=''; });
+
+  /* ── Hero title letter hover ─────────────────────────────── */
+  const heroTitle = document.querySelector('.g-hero__title');
+  if (heroTitle) {
+    heroTitle.querySelectorAll('.g-hero__title-line').forEach(line => {
+      line.addEventListener('mouseenter', () => {
+        line.style.transition = 'letter-spacing 0.3s ease';
+        line.style.letterSpacing = '-0.02em';
+      });
+      line.addEventListener('mouseleave', () => {
+        line.style.letterSpacing = '';
+      });
+    });
+  }
+
+  /* ── Footer social hover bounce ─────────────────────────── */
+  document.querySelectorAll('.g-footer__links a').forEach(a => {
+    a.addEventListener('mouseenter', () => {
+      a.style.transition = 'transform 0.2s';
+      a.style.transform  = 'translateY(-3px)';
+    });
+    a.addEventListener('mouseleave', () => { a.style.transform = ''; });
+  });
+</script>
+<style>
+@keyframes gRipple {
+  from { transform: scale(0); opacity: 1; }
+  to   { transform: scale(22); opacity: 0; }
+}
+</style>
+<!-- Service Worker registration -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .catch(() => { /* SW not critical — fail silently */ });
+  });
+}
+</script>
+</body>
+</html>
