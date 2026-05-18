@@ -1,0 +1,7 @@
+[
+  { "q": "Read carefully: do NOT press Next on the first screen.", "choices": ["I pressed Next", "I read and waited", "Skip", "Unsure"], "answer": 1 },
+  { "q": "How many letters are in the word \"alphabet\"?", "choices": ["8", "7", "26", "9"], "answer": 0 },
+  { "q": "Select the largest number.", "choices": ["999", "1000", "0.999", "Nine hundred"], "answer": 1 },
+  { "q": "Which is heavier: 1 kg iron or 1 kg cotton?", "choices": ["Iron", "Cotton", "Equal", "Cotton in vacuum"], "answer": 2 },
+  { "q": "Finish the sequence: O, T, T, F, F, S, S, ?", "choices": ["E", "N", "T", "H"], "answer": 0 }
+]

@@ -1,0 +1,7 @@
+[
+  { "q": "How many months have 28 days?", "choices": ["1", "12", "All of them", "February only"], "answer": 2 },
+  { "q": "What weighs more: a pound of feathers or a pound of bricks?", "choices": ["Feathers", "Bricks", "Same", "Depends"], "answer": 2 },
+  { "q": "Name three consecutive days without Monday, Tuesday, etc.", "choices": ["Impossible", "Yesterday, today, tomorrow", "Only weekends", "No way"], "answer": 1 },
+  { "q": "A plane crashes on the USA–Canada border. Where are survivors buried?", "choices": ["USA", "Canada", "Nowhere", "Both countries"], "answer": 2 },
+  { "q": "Press the answer that is NOT listed.", "choices": ["This one", "Not this", "Definitely not", ""], "answer": 3 }
+]

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/Images/logo.png"/>
+  <title>Memory Match — M.Games</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .diff-row { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1rem; }
+    .diff-btn { font-family: var(--g-mono); font-size: 0.75rem; padding: 0.4rem 0.9rem; border-radius: 8px; border: 1px solid var(--g-border); background: var(--g-surface); color: var(--g-muted); cursor: pointer; }
+    .diff-btn.active { border-color: var(--g-primary); color: var(--g-primary); }
+    #board { display: grid; gap: 8px; max-width: 100%; }
+    .card { aspect-ratio: 1; min-width: 56px; border-radius: 10px; border: 1px solid var(--g-border); background: var(--g-card); cursor: pointer; font-size: 1.6rem; display: flex; align-items: center; justify-content: center; user-select: none; }
+    .card.flipped, .card.matched { background: rgba(99,102,241,0.15); border-color: var(--g-primary); }
+    .card.matched { opacity: 0.5; pointer-events: none; }
+    #startScreen { text-align: center; max-width: 420px; }
+    .start-emoji { font-size: 3rem; }
+    .start-hint { font-family: var(--g-mono); font-size: 0.8rem; color: var(--g-muted); margin: 0.5rem 0 1rem; }
+  </style>
+</head>
+<body>
+  <div class="g-noise" aria-hidden="true"></div>
+  <header class="game-header"><div class="game-header__inner">
+    <a href="index.html" class="game-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</a>
+    <span class="game-title">MEMORY</span>
+    <div class="game-hud">
+      <div class="hud-item"><span class="hud-item__label">Moves</span><span class="hud-item__value" id="hudMoves">0</span></div>
+      <div class="hud-item"><span class="hud-item__label">Best</span><span class="hud-item__value" id="hudBest">—</span></div>
+    </div>
+  </div></header>
+  <main class="game-main">
+    <div id="startScreen">
+      <span class="start-emoji">🧠</span>
+      <p class="start-hint">Match all pairs. Pick a difficulty.</p>
+      <div class="diff-row">
+        <button type="button" class="diff-btn active" data-cols="4" data-rows="4">Easy 4×4</button>
+        <button type="button" class="diff-btn" data-cols="5" data-rows="4">Medium 5×4</button>
+        <button type="button" class="diff-btn" data-cols="6" data-rows="4">Hard 6×4</button>
+      </div>
+      <button type="button" class="g-btn g-btn--primary" id="startBtn">Start</button>
+    </div>
+    <div id="board" hidden></div>
+  </main>
+  <div class="game-overlay" id="overlay"><div class="game-overlay__box">
+    <span class="game-overlay__emoji">🎉</span>
+    <div class="game-overlay__title game-overlay__title--win" id="overlayTitle">You Win!</div>
+    <p class="game-overlay__sub" id="overlaySub"></p>
+    <button type="button" class="g-btn g-btn--primary" id="againBtn">Play Again</button>
+  </div></div>
+  <script src="memory.js"></script><script src="game-ui.js"></script>
+</body>
+</html>

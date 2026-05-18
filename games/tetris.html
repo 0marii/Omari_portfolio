@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content=""/>
+  <meta name="author" content="Mohammed Al-Omari"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="/games/tetris"/>
+  <meta property="og:title" content="Tetris — M.GAMES"/>
+  <meta property="og:description" content=""/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="/games/tetris"/>
+  <link rel="icon" type="image/png" href="/Images/logo.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tetris — M.Games</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .game-main {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1.5rem 1rem;
+    }
+
+    #tetrisCanvas {
+      display: block;
+      border: 1px solid var(--g-border-hi);
+      border-radius: 4px;
+      box-shadow: 0 0 40px rgba(99,102,241,0.2), 0 0 80px rgba(99,102,241,0.08);
+      flex-shrink: 0;
+    }
+
+    .side-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      min-width: 130px;
+    }
+
+    .side-card {
+      background: var(--g-card);
+      border: 1px solid var(--g-border);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+    }
+
+    .side-card__label {
+      font-family: var(--g-mono);
+      font-size: 0.65rem;
+      color: var(--g-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.6rem;
+    }
+
+    #nextCanvas {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .controls-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .ctrl-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      font-family: var(--g-mono);
+      font-size: 0.7rem;
+      color: var(--g-muted);
+    }
+
+    .ctrl-key {
+      background: var(--g-surface);
+      border: 1px solid var(--g-border);
+      border-radius: 5px;
+      padding: 0.15rem 0.45rem;
+      font-size: 0.65rem;
+      color: var(--g-text);
+      white-space: nowrap;
+    }
+
+    .high-score-val {
+      font-family: var(--g-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      background: var(--g-grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Mobile on-screen buttons */
+    .mobile-controls {
+      display: none;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 360px;
+      margin: 0.5rem auto 0;
+      padding: 0.5rem;
+    }
+
+    .mob-btn {
+      background: var(--g-card);
+      border: 1px solid var(--g-border);
+      border-radius: 12px;
+      color: var(--g-text);
+      font-size: 1.4rem;
+      padding: 0;
+      height: 56px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      transition: background 0.1s, border-color 0.1s;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .mob-btn:active {
+      background: rgba(99,102,241,0.15);
+      border-color: var(--g-primary);
+      transform: scale(0.94);
+    }
+
+    .mob-btn--drop {
+      grid-column: span 1;
+    }
+
+    /* Swipe hint shown on mobile */
+    .swipe-hint-mobile {
+      display: none;
+      font-family: var(--g-mono);
+      font-size: 0.72rem;
+      color: var(--g-muted);
+      text-align: center;
+      margin-top: 0.35rem;
+      opacity: 0.7;
+    }
+    @media (pointer: coarse) {
+      .swipe-hint-mobile { display: block; }
+    }
+
+    /* Pause badge */
+    .pause-badge {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--g-mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--g-primary);
+      pointer-events: none;
+      z-index: 10;
+      text-shadow: 0 0 20px rgba(99,102,241,0.8);
+    }
+
+    .canvas-wrap {
+      position: relative;
+    }
+
+    @media (max-width: 600px) {
+      .game-main {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.75rem 0.5rem;
+      }
+
+      .side-panel {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        min-width: unset;
+        width: 100%;
+        max-width: 320px;
+        gap: 0.75rem;
+      }
+
+      .side-card {
+        flex: 1;
+        min-width: 100px;
+      }
+
+      .controls-card { display: none; }
+
+      .mobile-controls { display: grid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="g-noise" aria-hidden="true"></div>
+
+  <header class="game-header">
+    <div class="game-header__inner">
+      <a href="index.html" class="game-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back
+      </a>
+
+      <span class="game-title">TETRIS</span>
+
+      <div class="game-hud">
+        <div class="hud-item">
+          <span class="hud-item__label">Score</span>
+          <span class="hud-item__value" id="hudScore">0</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-item__label">Lines</span>
+          <span class="hud-item__value" id="hudLines">0</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-item__label">Level</span>
+          <span class="hud-item__value" id="hudLevel">1</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="game-main">
+    <div class="canvas-wrap">
+      <canvas id="tetrisCanvas" width="280" height="560"></canvas>
+      <span class="pause-badge" id="pauseBadge">PAUSED</span>
+    </div>
+
+    <aside class="side-panel">
+      <div class="side-card">
+        <div class="side-card__label">Next</div>
+        <canvas id="nextCanvas" width="120" height="120"></canvas>
+      </div>
+
+      <div class="side-card">
+        <div class="side-card__label">Best</div>
+        <div class="high-score-val" id="highScoreVal">0</div>
+      </div>
+
+      <div class="side-card controls-card">
+        <div class="side-card__label">Controls</div>
+        <div class="controls-list">
+          <div class="ctrl-row">
+            <span class="ctrl-key">← →</span>
+            <span>Move</span>
+          </div>
+          <div class="ctrl-row">
+            <span class="ctrl-key">↑ / Z</span>
+            <span>Rotate</span>
+          </div>
+          <div class="ctrl-row">
+            <span class="ctrl-key">↓</span>
+            <span>Soft drop</span>
+          </div>
+          <div class="ctrl-row">
+            <span class="ctrl-key">Space</span>
+            <span>Hard drop</span>
+          </div>
+          <div class="ctrl-row">
+            <span class="ctrl-key">P</span>
+            <span>Pause</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile on-screen controls -->
+    <div class="mobile-controls" id="mobileControls" aria-label="Game controls">
+      <button class="mob-btn" id="mobLeft"   aria-label="Move left">◀</button>
+      <button class="mob-btn" id="mobDown"   aria-label="Soft drop">▼</button>
+      <button class="mob-btn" id="mobRotate" aria-label="Rotate">↻</button>
+      <button class="mob-btn" id="mobRight"  aria-label="Move right">▶</button>
+      <button class="mob-btn mob-btn--drop" id="mobDrop" aria-label="Hard drop">⬇</button>
+    </div>
+    <p class="swipe-hint-mobile">Swipe on board · Tap = Rotate · Swipe ↓ = Drop</p>
+  </main>
+
+  <!-- Game Over Overlay -->
+  <div class="game-overlay" id="gameOverlay" role="dialog" aria-modal="true" aria-label="Game Over">
+    <div class="game-overlay__box">
+      <span class="game-overlay__emoji">💥</span>
+      <h2 class="game-overlay__title game-overlay__title--lose">GAME OVER</h2>
+      <p class="game-overlay__sub">The blocks have won this round.</p>
+      <span class="game-overlay__score" id="overlayScore">Score: 0</span>
+      <div class="game-overlay__actions">
+        <button class="g-btn g-btn--primary" id="restartBtn">Play Again</button>
+        <a href="index.html" class="g-btn g-btn--outline">Back to Games</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="tetris.js"></script>
+<script src="game-ui.js"></script>
+</body>
+</html>

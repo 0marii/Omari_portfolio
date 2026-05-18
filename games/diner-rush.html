@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="icon" type="image/png" href="/Images/logo.png"/>
+<title>Diner Rush — M.Games</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.game-main{gap:1rem;min-height:50vh}
+#startScreen{position:absolute;inset:0;z-index:5;background:rgba(5,5,16,.88);backdrop-filter:blur(6px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;border-radius:12px}
+#startScreen.hidden{opacity:0;pointer-events:none;visibility:hidden}
+.start-emoji{font-size:3rem}.start-hint{font-family:var(--g-mono);font-size:.8rem;color:var(--g-muted);text-align:center;padding:0 1rem;max-width:24rem}
+.canvas-wrap{position:relative;width:min(100%,640px);border-radius:12px;overflow:hidden;border:1px solid var(--g-border)}
+.canvas-wrap canvas{display:block;width:100%;touch-action:none}
+
+</style>
+</head>
+<body>
+<div class="g-noise" aria-hidden="true"></div>
+<header class="game-header"><div class="game-header__inner">
+<a href="index.html" class="game-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</a>
+<span class="game-title">DINER RUSH</span>
+<div class="game-hud"><div class="hud-item"><span class="hud-item__label">Score</span><span class="hud-item__value" id="hudScore">0</span></div><div class="hud-item"><span class="hud-item__label">Time</span><span class="hud-item__value" id="hudTime">0</span></div></div>
+</div></header>
+<main class="game-main"><div id="startScreen"><span class="start-emoji">🍔</span>
+<p class="start-hint">Seat and serve customers</p><button type="button" class="g-btn g-btn--primary" id="startBtn">Start</button></div><div id="play" hidden><p id="msg">Playing Diner Rush...</p><button id="act" class="g-btn g-btn--primary">Action</button></div></main>
+<div class="game-overlay" id="overlay"><div class="game-overlay__box">
+<span class="game-overlay__emoji" id="overlayEmoji">🍔</span>
+<div class="game-overlay__title" id="overlayTitle">Game Over</div>
+<p class="game-overlay__sub" id="overlaySub"></p>
+<button type="button" class="g-btn g-btn--primary" id="againBtn">Play Again</button>
+</div></div>
+<script src="diner-rush.js"></script><script src="game-ui.js"></script>
+</body></html>
