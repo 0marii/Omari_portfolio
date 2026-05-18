@@ -1,5 +1,6 @@
 {
   "buildCommand": "node scripts/generate-sitemap.mjs",
+  "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
