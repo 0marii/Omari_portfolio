@@ -176,11 +176,11 @@ function draw() {
   const h = canvas.height;
 
   // Background
-  ctx.fillStyle = '#050510';
+  ctx.fillStyle = '#010409';
   ctx.fillRect(0, 0, w, h);
 
   // Grid lines
-  ctx.strokeStyle = 'rgba(99,102,241,0.05)';
+  ctx.strokeStyle = 'rgba(35,134,54,0.08)';
   ctx.lineWidth   = 0.5;
   for (let x = 0; x <= w; x += CELL) {
     ctx.beginPath();
@@ -208,14 +208,14 @@ function draw() {
     if (isHead) {
       // Head with gradient
       const grad = ctx.createLinearGradient(px, py, px + CELL, py + CELL);
-      grad.addColorStop(0, '#6366f1');
-      grad.addColorStop(1, '#a855f7');
-      ctx.shadowColor = '#6366f1';
-      ctx.shadowBlur  = 16;
+      grad.addColorStop(0, '#3fb950');
+      grad.addColorStop(1, '#238636');
+      ctx.shadowColor = '#238636';
+      ctx.shadowBlur  = 12;
       ctx.fillStyle   = grad;
     } else {
       ctx.shadowBlur  = 0;
-      ctx.fillStyle   = `rgba(99,102,241,${alpha})`;
+      ctx.fillStyle   = `rgba(46,160,67,${alpha})`;
     }
 
     const radius = isHead ? 6 : 4;

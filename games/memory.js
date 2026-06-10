@@ -46,7 +46,12 @@ function renderBoard() {
     el.type = 'button';
     el.className = 'card';
     el.dataset.i = i;
-    el.textContent = c.matched || flipped.includes(i) ? c.emoji : '?';
+    if (c.matched || flipped.includes(i)) {
+      el.textContent = c.emoji;
+      el.classList.add('flipped');
+    } else {
+      el.textContent = '';
+    }
     if (c.matched) el.classList.add('matched');
     if (flipped.includes(i)) el.classList.add('flipped');
     el.addEventListener('click', () => onFlip(i));

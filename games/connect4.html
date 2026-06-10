@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Drop discs, connect four in a row."/>
+<meta name="author" content="Mohammed Al-Omari"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://mohammedalomari.dev/games/connect4"/>
+<meta property="og:title" content="Connect 4 — M.GAMES"/>
+<meta property="og:description" content="Drop discs, connect four in a row."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://mohammedalomari.dev/games/connect4"/>
 <link rel="icon" type="image/png" href="/Images/logo.png"/>
 <title>Connect 4 — M.Games</title>
-<link rel="stylesheet" href="shared.css"/>
-<style>
-.game-main{gap:1rem;min-height:50vh}
-#startScreen{position:absolute;inset:0;z-index:5;background:rgba(5,5,16,.88);backdrop-filter:blur(6px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;border-radius:12px}
-#startScreen.hidden{opacity:0;pointer-events:none;visibility:hidden}
-.start-emoji{font-size:3rem}.start-hint{font-family:var(--g-mono);font-size:.8rem;color:var(--g-muted);text-align:center;padding:0 1rem;max-width:24rem}
-.canvas-wrap{position:relative;width:min(100%,640px);border-radius:12px;overflow:hidden;border:1px solid var(--g-border)}
-.canvas-wrap canvas{display:block;width:100%;touch-action:none}
-.cell{aspect-ratio:1;border-radius:50%;border:1px solid var(--g-border);background:var(--g-card);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
-</style>
+<link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="game-skins.css" />
 </head>
-<body>
+<body class="game--connect4">
 <div class="g-noise" aria-hidden="true"></div>
 <header class="game-header"><div class="game-header__inner">
 <a href="index.html" class="game-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</a>

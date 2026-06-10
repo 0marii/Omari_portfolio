@@ -90,7 +90,7 @@ for (const g of games) {
     const body = `<div class="canvas-wrap"><canvas id="gameCanvas" width="${g.w}" height="${g.h}" aria-label="${g.title}"></canvas></div>
     <p class="game-controls"><span class="game-controls__key">Click / Tap to play</span></p>`;
     const html = shell({ title: g.title, slug: g.slug, genre: g.genre, emoji: '🎮', body, extra: canvasStyle });
-    writeFileSync(htmlPath, html.replace(/<motion /g, '<div ').replace(/<\/motion>/g, '</motion>'));
+    writeFileSync(htmlPath, html.replace(/<motion /g, '<div ').replace(/<\/motion>/g, '</div>'));
   }
 }
 

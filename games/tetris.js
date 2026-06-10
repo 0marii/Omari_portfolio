@@ -5,13 +5,13 @@ const COLS       = 10;
 const ROWS       = 20;
 const CELL       = 28;
 const COLORS = {
-  I: '#06b6d4',
-  O: '#f59e0b',
-  T: '#a855f7',
-  S: '#10b981',
-  Z: '#ef4444',
-  J: '#3b82f6',
-  L: '#f97316',
+  I: '#00f0f0',
+  O: '#f0f000',
+  T: '#a000f0',
+  S: '#00f000',
+  Z: '#f00000',
+  J: '#0000f0',
+  L: '#f0a000',
 };
 
 const SHAPES = {
@@ -258,15 +258,15 @@ function drawCell(context, x, y, key, alpha, glow) {
 
 function drawBoard() {
   // Background
-  ctx.fillStyle = '#050510';
+  ctx.fillStyle = '#000000';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   // Grid cells background
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
-      ctx.fillStyle = '#0c0c20';
+      ctx.fillStyle = '#101018';
       ctx.fillRect(c * CELL, r * CELL, CELL, CELL);
-      ctx.strokeStyle = 'rgba(99,102,241,0.08)';
+      ctx.strokeStyle = 'rgba(80,80,120,0.25)';
       ctx.lineWidth = 0.5;
       ctx.strokeRect(c * CELL + 0.25, r * CELL + 0.25, CELL - 0.5, CELL - 0.5);
     }

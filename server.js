@@ -48,8 +48,20 @@ async function handleRequest(req, res) {
     return sendFile(res, path.join(ROOT, 'index.html'));
   }
 
-  if (pathname === '/games') {
+  if (pathname === '/games' || pathname === '/games/') {
     return sendFile(res, path.join(ROOT, 'games', 'index.html'));
+  }
+
+  // cleanUrls: /games/wordle → games/wordle.html
+  if (!path.extname(pathname)) {
+    const htmlPath = path.join(ROOT, `${pathname}.html`);
+    const normalizedHtml = path.normalize(htmlPath);
+    if (normalizedHtml.startsWith(ROOT)) {
+      try {
+        const stats = await fs.stat(normalizedHtml);
+        if (stats.isFile()) return sendFile(res, normalizedHtml);
+      } catch { /* fall through */ }
+    }
   }
 
   const filePath = path.join(ROOT, pathname);

@@ -341,34 +341,6 @@
   });
 
   /* ─────────────────────────────────────────────────────────────────────────
-     COUNTER ANIMATION (with click-to-replay)
-  ───────────────────────────────────────────────────────────────────────── */
-  function runCounter(el) {
-    const target  = parseFloat(el.dataset.count || el.dataset.countDecimal || 0);
-    const decimal = 'countDecimal' in el.dataset;
-    gsap.fromTo({ val: 0 }, { val: target }, {
-      duration: 1.5,
-      ease: 'power2.out',
-      onUpdate: function () {
-        el.textContent = decimal
-          ? this.targets()[0].val.toFixed(2)
-          : Math.round(this.targets()[0].val);
-      }
-    });
-  }
-
-  document.querySelectorAll('[data-count], [data-count-decimal]').forEach(el => {
-    ScrollTrigger.create({
-      trigger: el,
-      start: 'top 82%',
-      once: true,
-      onEnter: () => runCounter(el)
-    });
-    // Click to replay
-    el.closest('.stat-card')?.addEventListener('click', () => runCounter(el));
-  });
-
-  /* ─────────────────────────────────────────────────────────────────────────
      3D TILT CARDS
   ───────────────────────────────────────────────────────────────────────── */
   if (!isTouchDevice) {
@@ -633,27 +605,16 @@
   });
 
   /* ─────────────────────────────────────────────────────────────────────────
-     GAMES CTA — ANIMATED BORDER + HOVER PARTICLES
+     PLAYGROUND — HOVER GLOW
   ───────────────────────────────────────────────────────────────────────── */
-  const gamesCta = document.querySelector('.games-cta__box');
-  if (gamesCta) {
-    gamesCta.addEventListener('mouseenter', () => {
-      gsap.to(gamesCta, { boxShadow: '0 0 60px rgba(168,85,247,0.3)', duration: 0.4 });
+  const playgroundBox = document.querySelector('.playground__box');
+  if (playgroundBox) {
+    playgroundBox.addEventListener('mouseenter', () => {
+      gsap.to(playgroundBox, { boxShadow: '0 0 60px rgba(168,85,247,0.3)', duration: 0.4 });
     });
-    gamesCta.addEventListener('mouseleave', () => {
-      gsap.to(gamesCta, { boxShadow: 'none', duration: 0.4 });
+    playgroundBox.addEventListener('mouseleave', () => {
+      gsap.to(playgroundBox, { boxShadow: 'none', duration: 0.4 });
     });
-
-    // Emoji bounce on hover
-    const emoji = gamesCta.querySelector('.games-cta__icon');
-    if (emoji) {
-      gamesCta.addEventListener('mouseenter', () => {
-        gsap.to(emoji, { rotate: 15, scale: 1.2, duration: 0.3, ease: 'back.out(3)' });
-      });
-      gamesCta.addEventListener('mouseleave', () => {
-        gsap.to(emoji, { rotate: 0, scale: 1, duration: 0.5, ease: 'elastic.out(1, 0.5)' });
-      });
-    }
   }
 
   /* ─────────────────────────────────────────────────────────────────────────

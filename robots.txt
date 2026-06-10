@@ -33,4 +33,4 @@ Allow: /
 User-agent: Applebot
 Allow: /
 
-Sitemap: /sitemap.xml
+Sitemap: https://mohammedalomari.dev/sitemap.xml

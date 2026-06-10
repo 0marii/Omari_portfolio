@@ -3,23 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Flip and match all pairs in fewest moves."/>
+  <meta name="author" content="Mohammed Al-Omari"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://mohammedalomari.dev/games/memory"/>
+  <meta property="og:title" content="Memory Match — M.GAMES"/>
+  <meta property="og:description" content="Flip and match all pairs in fewest moves."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://mohammedalomari.dev/games/memory"/>
   <link rel="icon" type="image/png" href="/Images/logo.png"/>
   <title>Memory Match — M.Games</title>
   <link rel="stylesheet" href="shared.css" />
-  <style>
-    .diff-row { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1rem; }
-    .diff-btn { font-family: var(--g-mono); font-size: 0.75rem; padding: 0.4rem 0.9rem; border-radius: 8px; border: 1px solid var(--g-border); background: var(--g-surface); color: var(--g-muted); cursor: pointer; }
-    .diff-btn.active { border-color: var(--g-primary); color: var(--g-primary); }
-    #board { display: grid; gap: 8px; max-width: 100%; }
-    .card { aspect-ratio: 1; min-width: 56px; border-radius: 10px; border: 1px solid var(--g-border); background: var(--g-card); cursor: pointer; font-size: 1.6rem; display: flex; align-items: center; justify-content: center; user-select: none; }
-    .card.flipped, .card.matched { background: rgba(99,102,241,0.15); border-color: var(--g-primary); }
-    .card.matched { opacity: 0.5; pointer-events: none; }
-    #startScreen { text-align: center; max-width: 420px; }
-    .start-emoji { font-size: 3rem; }
-    .start-hint { font-family: var(--g-mono); font-size: 0.8rem; color: var(--g-muted); margin: 0.5rem 0 1rem; }
-  </style>
-</head>
-<body>
+  <link rel="stylesheet" href="game-skins.css" />
+  </head>
+<body class="game--memory">
   <div class="g-noise" aria-hidden="true"></div>
   <header class="game-header"><div class="game-header__inner">
     <a href="index.html" class="game-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</a>

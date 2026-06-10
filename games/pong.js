@@ -3,6 +3,7 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const W = 640, H = 400;
+const WIN_SCORE = 7;
 const startScreen = document.getElementById('startScreen');
 const overlay = document.getElementById('overlay');
 const overlaySub = document.getElementById('overlaySub');
@@ -11,18 +12,23 @@ const overlayEmoji = document.getElementById('overlayEmoji');
 const hudScore = document.getElementById('hudScore');
 const hudBest = document.getElementById('hudBest');
 
-let paddle, ai, ball, playerScore, best, playing, keys, raf;
+let paddle, ai, ball, playerScore, aiScore, best, playing, keys, raf;
 
 function loadBest() {
   try { best = Number(localStorage.getItem('pong_best')) || 0; } catch (_) { best = 0; }
   hudBest.textContent = best;
 }
 
+function updateHud() {
+  hudScore.textContent = `${playerScore} – ${aiScore}`;
+}
+
 function resetMatch() {
   paddle = { y: H / 2 - 40, h: 80 };
   ai = { y: H / 2 - 40, h: 80 };
   playerScore = 0;
-  hudScore.textContent = '0';
+  aiScore = 0;
+  updateHud();
   serve();
 }
 
@@ -41,7 +47,7 @@ function endGame(won) {
   overlayTitle.textContent = won ? 'You Win!' : 'AI Wins';
   overlayTitle.className = won ? 'game-overlay__title game-overlay__title--win' : 'game-overlay__title game-overlay__title--lose';
   overlayEmoji.textContent = won ? '🏆' : '🤖';
-  overlaySub.textContent = `Final: ${playerScore} – ${won ? '7' : playerScore}`;
+  overlaySub.textContent = `Final: ${playerScore} – ${aiScore}`;
   overlay.classList.add('visible');
 }
 
@@ -59,27 +65,34 @@ function update() {
   }
   if (ball.x + ball.r > W - 24 && ball.y > ai.y && ball.y < ai.y + ai.h) ball.vx = -Math.abs(ball.vx);
   if (ball.x < 0) {
-    if (playerScore >= 6) return endGame(false);
+    aiScore++;
+    updateHud();
+    if (aiScore >= WIN_SCORE) return endGame(false);
     serve();
     ball.vx = 5;
   }
   if (ball.x > W) {
     playerScore++;
-    hudScore.textContent = playerScore;
-    if (playerScore >= 7) return endGame(true);
+    updateHud();
+    if (playerScore >= WIN_SCORE) return endGame(true);
     serve();
     ball.vx = -5;
   }
 }
 
 function draw() {
-  ctx.fillStyle = '#050510';
+  ctx.fillStyle = '#000000';
   ctx.fillRect(0, 0, W, H);
-  ctx.fillStyle = '#6366f1';
+  ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+  ctx.setLineDash([8, 12]);
+  ctx.beginPath();
+  ctx.moveTo(W / 2, 0);
+  ctx.lineTo(W / 2, H);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#ffffff';
   ctx.fillRect(12, paddle.y, 12, paddle.h);
-  ctx.fillStyle = '#ec4899';
   ctx.fillRect(W - 24, ai.y, 12, ai.h);
-  ctx.fillStyle = '#f59e0b';
   ctx.beginPath();
   ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
   ctx.fill();

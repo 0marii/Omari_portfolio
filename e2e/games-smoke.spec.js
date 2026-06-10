@@ -6,7 +6,7 @@ const slugs = [...new Set(catalog.map((g) => g.slug))];
 
 for (const slug of slugs) {
   test(`loads /games/${slug}`, async ({ page }) => {
-    await page.goto(`/games/${slug}.html`);
+    await page.goto(`/games/${slug}.html`, { waitUntil: 'domcontentloaded' });
     await expect(page.locator('.game-header')).toBeVisible();
     const start = page.locator('#startBtn, #startScreen button, .g-btn--primary').first();
     if (await start.count()) {
@@ -17,6 +17,6 @@ for (const slug of slugs) {
 }
 
 test('catalog page loads', async ({ page }) => {
-  await page.goto('/games/');
+  await page.goto('/games/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.g-grid .g-card')).toHaveCount(slugs.length);
 });

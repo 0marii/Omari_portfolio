@@ -2,155 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content=""/>
+  <meta name="description" content="Neon snake with speed progression."/>
   <meta name="author" content="Mohammed Al-Omari"/>
   <meta name="robots" content="index, follow"/>
-  <link rel="canonical" href="/games/snake"/>
+  <link rel="canonical" href="https://mohammedalomari.dev/games/snake"/>
   <meta property="og:title" content="Snake — M.GAMES"/>
-  <meta property="og:description" content=""/>
+  <meta property="og:description" content="Neon snake with speed progression."/>
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="/games/snake"/>
+  <meta property="og:url" content="https://mohammedalomari.dev/games/snake"/>
   <link rel="icon" type="image/png" href="/Images/logo.png"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Snake — M.Games</title>
   <link rel="stylesheet" href="shared.css" />
-  <style>
-    /* ── Canvas wrapper ───────────────────────────────────── */
-    #canvasWrapper {
-      position: relative;
-      display: inline-block;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid var(--g-border);
-      box-shadow: 0 0 40px rgba(99, 102, 241, 0.1);
-      max-width: 100%;
-    }
-
-    #snakeCanvas {
-      display: block;
-      max-width: 100%;
-      border-radius: 10px;
-    }
-
-    /* ── Start Screen ────────────────────────────────────── */
-    #startScreen {
-      position: absolute;
-      inset: 0;
-      background: rgba(5, 5, 16, 0.88);
-      backdrop-filter: blur(6px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      border-radius: 10px;
-      transition: opacity 0.3s;
-    }
-
-    #startScreen.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    #startScreen .start-emoji {
-      font-size: 3rem;
-    }
-
-    #startScreen .start-title {
-      font-family: var(--g-mono);
-      font-size: 1.5rem;
-      font-weight: 700;
-      background: var(--g-grad-text);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    #startScreen .start-hint {
-      font-family: var(--g-mono);
-      font-size: 0.82rem;
-      color: var(--g-muted);
-      text-align: center;
-      padding: 0 1rem;
-    }
-
-    #startScreen .g-btn {
-      margin-top: 0.5rem;
-    }
-
-    /* ── D-pad (mobile only) ─────────────────────────────── */
-    #dpad {
-      display: none;
-      grid-template-columns: repeat(3, 64px);
-      grid-template-rows: repeat(3, 64px);
-      gap: 6px;
-      margin-top: 1rem;
-    }
-
-    @media (pointer: coarse) {
-      #dpad { display: grid; }
-    }
-
-    .dpad-btn {
-      width: 64px;
-      height: 64px;
-      background: var(--g-surface);
-      border: 1px solid var(--g-border);
-      border-radius: 14px;
-      color: var(--g-text);
-      font-size: 1.5rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.1s, border-color 0.1s, transform 0.1s;
-      user-select: none;
-      -webkit-user-select: none;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-    }
-
-    .dpad-btn:active {
-      background: rgba(99,102,241,0.15);
-      border-color: var(--g-primary);
-      transform: scale(0.92);
-    }
-
-    /* Swipe hint for mobile */
-    .swipe-hint {
-      display: none;
-      font-family: var(--g-mono);
-      font-size: 0.7rem;
-      color: var(--g-muted);
-      text-align: center;
-      margin-top: 0.4rem;
-      opacity: 0.65;
-    }
-    @media (pointer: coarse) {
-      .swipe-hint { display: block; }
-    }
-
-    /* Positions in the 3×3 grid */
-    #btnUp    { grid-column: 2; grid-row: 1; }
-    #btnLeft  { grid-column: 1; grid-row: 2; }
-    #btnRight { grid-column: 3; grid-row: 2; }
-    #btnDown  { grid-column: 2; grid-row: 3; }
-
-    /* ── Overlay sub-content ─────────────────────────────── */
-    #goScores {
-      font-family: var(--g-mono);
-      font-size: 0.9rem;
-      color: var(--g-muted);
-      margin-bottom: 0.25rem;
-    }
-
-    #goScores span {
-      color: var(--g-text);
-      font-weight: 700;
-    }
-  </style>
-</head>
-<body>
+  <link rel="stylesheet" href="game-skins.css" />
+  </head>
+<body class="game--snake">
   <div class="g-noise" aria-hidden="true"></div>
 
   <!-- Header -->

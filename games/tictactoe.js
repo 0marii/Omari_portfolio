@@ -8,8 +8,8 @@ let best=isMax?{score:-1e9}:{score:1e9};
 for(let i=0;i<9;i++){if(bd[i])continue;bd[i]=isMax?ai:human;const s=minimax(bd,!isMax).score;bd[i]='';
 if(isMax){if(s>best.score)best={score:s,idx:i};}else{if(s<best.score)best={score:s,idx:i};}}
 return best;}
-function render(){grid.innerHTML='';b.forEach((v,i)=>{const btn=document.createElement('button');btn.textContent=v||'';btn.disabled=!!v||!playing;btn.onclick=()=>move(i);grid.appendChild(btn);});}
+function render(){grid.innerHTML='';b.forEach((v,i)=>{const btn=document.createElement('button');btn.className='cell';btn.textContent=v==='X'?'✕':v==='O'?'○':'';btn.disabled=!!v||!playing;btn.onclick=()=>move(i);grid.appendChild(btn);});}
 function end(w){playing=false;overlay.classList.add('visible');if(w==='draw'){title.textContent='Draw';title.className='game-overlay__title';emoji.textContent='🤝';sub.textContent='';}else if(w===human){title.textContent='You Win!';title.className='game-overlay__title game-overlay__title--win';emoji.textContent='🏆';sub.textContent='';}else{title.textContent='AI Wins';title.className='game-overlay__title game-overlay__title--lose';emoji.textContent='🤖';sub.textContent='';}}
-function move(i){if(!playing||b[i])return;b[i]=human;const w=winner(b);if(w)return end(w);const aiMove=minimax(b,true).idx;b[aiMove]=ai;render();const w2=winner(b);if(w2)return end(w2);}
+function move(i){if(!playing||b[i])return;b[i]=human;render();const w=winner(b);if(w)return end(w);const aiMove=minimax(b,true).idx;b[aiMove]=ai;render();const w2=winner(b);if(w2)return end(w2);}
 document.getElementById('startBtn').onclick=()=>{b=Array(9).fill('');playing=true;start.classList.add('hidden');grid.hidden=false;render();};
 document.getElementById('againBtn').onclick=()=>{overlay.classList.remove('visible');start.classList.remove('hidden');grid.hidden=true;};

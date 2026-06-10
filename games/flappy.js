@@ -58,18 +58,20 @@ function die() {
 
 function draw() {
   const g = ctx.createLinearGradient(0, 0, 0, H);
-  g.addColorStop(0, '#0c0c28'); g.addColorStop(1, '#050510');
+  g.addColorStop(0, '#4ec0ca'); g.addColorStop(0.7, '#87ceeb'); g.addColorStop(1, '#ded895');
   ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-  ctx.fillStyle = 'rgba(99,102,241,0.15)';
-  for (let i = 0; i < 8; i++) ctx.fillRect(0, (frame * 2 + i * 80) % H, W, 2);
-  ctx.fillStyle = '#6366f1';
+  ctx.fillStyle = '#73bf2e';
   pipes.forEach((p) => {
-    ctx.fillRect(p.x, 0, 50, p.top);
-    ctx.fillRect(p.x, p.top + p.gap, 50, H - p.top - p.gap);
+    ctx.fillRect(p.x, 0, 52, p.top);
+    ctx.fillRect(p.x - 4, p.top - 24, 60, 24);
+    ctx.fillRect(p.x, p.top + p.gap, 52, H - p.top - p.gap);
+    ctx.fillRect(p.x - 4, p.top + p.gap, 60, 24);
   });
   ctx.beginPath(); ctx.arc(70, bird.y, bird.r, 0, Math.PI * 2);
-  ctx.fillStyle = '#f59e0b'; ctx.fill();
-  ctx.fillStyle = '#fff'; ctx.fillRect(78, bird.y - 4, 8, 8);
+  ctx.fillStyle = '#f7dc6f'; ctx.fill();
+  ctx.strokeStyle = '#e6b800'; ctx.lineWidth = 2; ctx.stroke();
+  ctx.fillStyle = '#fff'; ctx.fillRect(78, bird.y - 5, 9, 9);
+  ctx.fillStyle = '#000'; ctx.fillRect(82, bird.y - 3, 3, 3);
   if (state === STATE.IDLE) {
     ctx.fillStyle = 'rgba(240,240,255,0.9)'; ctx.font = 'bold 22px JetBrains Mono, monospace';
     ctx.textAlign = 'center'; ctx.fillText('Tap to Start', W / 2, H / 2);

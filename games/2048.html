@@ -3,23 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Slide and merge tiles to 2048."/>
+  <meta name="author" content="Mohammed Al-Omari"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://mohammedalomari.dev/games/2048"/>
+  <meta property="og:title" content="2048 — M.GAMES"/>
+  <meta property="og:description" content="Slide and merge tiles to 2048."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://mohammedalomari.dev/games/2048"/>
   <title>2048 — M.Games</title>
   <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="game-skins.css" />
   <link rel="icon" type="image/png" href="/Images/logo.png"/>
-  <style>
-    .board { display: grid; grid-template-columns: repeat(4, 72px); gap: 8px; padding: 12px; background: var(--g-surface); border-radius: 12px; border: 1px solid var(--g-border); }
-    .cell { width: 72px; height: 72px; border-radius: 8px; background: var(--g-card); display: flex; align-items: center; justify-content: center; font-family: var(--g-mono); font-weight: 700; font-size: 1.4rem; }
-    .cell[data-v="2"] { background: #1e1e45; color: #f0f0ff; }
-    .cell[data-v="4"] { background: #312e81; }
-    .cell[data-v="8"] { background: #6366f1; color: #fff; }
-    .cell[data-v="16"] { background: #7c3aed; color: #fff; }
-    .cell[data-v="32"] { background: #a855f7; color: #fff; }
-    .cell[data-v="64"] { background: #ec4899; color: #fff; }
-    .cell[data-v="128"], .cell[data-v="256"], .cell[data-v="512"], .cell[data-v="1024"], .cell[data-v="2048"] { background: linear-gradient(135deg,#6366f1,#ec4899); color: #fff; font-size: 1.1rem; }
-    .msg { font-family: var(--g-mono); color: var(--g-muted); margin-top: 1rem; text-align: center; }
-  </style>
-</head>
-<body>
+  </head>
+<body class="game--2048">
   <div class="g-noise" aria-hidden="true"></div>
   <header class="game-header"><div class="game-header__inner">
     <a href="index.html" class="game-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</a>

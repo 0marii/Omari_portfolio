@@ -3,21 +3,20 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Unbeatable minimax AI or two-player."/>
+  <meta name="author" content="Mohammed Al-Omari"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://mohammedalomari.dev/games/tictactoe"/>
+  <meta property="og:title" content="Tic-Tac-Toe — M.GAMES"/>
+  <meta property="og:description" content="Unbeatable minimax AI or two-player."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://mohammedalomari.dev/games/tictactoe"/>
   <link rel="icon" type="image/png" href="/Images/logo.png"/>
   <title>Tic-Tac-Toe — M.Games</title>
-  <link rel="stylesheet" href="shared.css"/>
-  <style>
-    .game-main{gap:1rem}
-    #startScreen{position:absolute;inset:0;z-index:5;background:rgba(5,5,16,.88);backdrop-filter:blur(6px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;border-radius:12px}
-    #startScreen.hidden{opacity:0;pointer-events:none;visibility:hidden}
-    .start-emoji{font-size:3rem}.start-title{font-family:var(--g-mono);font-size:1.35rem;font-weight:700;background:var(--g-grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .start-hint{font-family:var(--g-mono);font-size:.8rem;color:var(--g-muted);text-align:center;padding:0 1rem;max-width:28rem;line-height:1.6}
-    .canvas-wrap{position:relative;width:min(100%,640px);border-radius:12px;overflow:hidden;border:1px solid var(--g-border)}
-    .canvas-wrap canvas{display:block;width:100%;touch-action:none}
-    #grid{display:grid;grid-template-columns:repeat(3,90px);gap:8px}#grid button{width:90px;height:90px;font-size:2rem;border-radius:12px;border:1px solid var(--g-border);background:var(--g-card);color:var(--g-text);cursor:pointer}
-  </style>
-</head>
-<body>
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="game-skins.css" />
+  </head>
+<body class="game--tictactoe">
   <div class="g-noise" aria-hidden="true"></div>
   <header class="game-header"><div class="game-header__inner">
     <a href="index.html" class="game-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</a>

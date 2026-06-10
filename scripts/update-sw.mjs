@@ -7,22 +7,22 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const cat = JSON.parse(readFileSync(join(root, 'games/catalog.json'), 'utf8'));
 const paths = [
   '/', '/index.html', '/style.css', '/script.js', '/js/perf.js', '/js/scene.js',
-  '/games/', '/games/index.html', '/games/games.css', '/games/shared.css', '/games/game-ui.js',
-  '/games/lib/storage.js', '/games/lib/loop.js', '/games/lib/input.js', '/games/lib/grid.js',
+  '/games/', '/games/index.html', '/games/games.css', '/games/shared.css', '/games/game-skins.css', '/games/game-ui.js',
   '/games/catalog.json',
-  '/games/data/trick-quiz.json', '/games/data/brain-check.json',
-  '/games/tower-game.js',
-  '/404.html', '/Images/logo.png', '/Images/wordle-game.jpg',
+  '/404.html', '/Images/logo.png', '/Images/og-image.png', '/Images/wordle-game.jpg',
+  '/Images/wordle-game.webp', '/Images/TDEC-company.webp', '/Images/calculator.webp', '/Images/todo.webp',
 ];
 for (const g of cat) {
   paths.push(`/games/${g.slug}.html`);
   paths.push(g.slug === 'tower' ? '/games/tower-game.js' : `/games/${g.slug}.js`);
 }
 let sw = readFileSync(join(root, 'sw.js'), 'utf8');
-sw = sw.replace(/const CACHE_VERSION\s*=\s*'[^']+'/, "const CACHE_VERSION  = 'v11'");
+const verMatch = sw.match(/const CACHE_VERSION\s*=\s*'v(\d+)'/);
+const nextVer = verMatch ? `v${Number(verMatch[1]) + 1}` : 'v12';
+sw = sw.replace(/const CACHE_VERSION\s*=\s*'[^']+'/, `const CACHE_VERSION  = '${nextVer}'`);
 sw = sw.replace(
   /const PRECACHE_STATIC = \[[\s\S]*?\];/,
-  `const PRECACHE_STATIC = ${JSON.stringify(paths, null, 2).replace(/\n/g, '\n')};`
+  `const PRECACHE_STATIC = ${JSON.stringify(paths, null, 2)};`
 );
 writeFileSync(join(root, 'sw.js'), sw);
-console.log('sw.js updated with', paths.length, 'paths');
+console.log('sw.js updated:', nextVer, paths.length, 'paths');

@@ -1,21 +1,22 @@
 #!/usr/bin/env node
 /**
- * Writes sitemap.xml (and robots.txt Sitemap line) using the deploy host.
- * On Vercel: VERCEL_PROJECT_PRODUCTION_URL or VERCEL_URL.
- * Locally: set SITE_URL=https://your-domain.com or skip (keeps existing files).
+ * Writes sitemap.xml (and robots.txt Sitemap line) from games/catalog.json.
+ * Host: VERCEL_PROJECT_PRODUCTION_URL, VERCEL_URL, or SITE_URL (default: mohammedalomari.dev).
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+const catalog = JSON.parse(readFileSync(join(root, "games/catalog.json"), "utf8"));
+const DEFAULT_HOST = "mohammedalomari.dev";
 
 function siteBase() {
   const host =
     process.env.VERCEL_PROJECT_PRODUCTION_URL ||
     process.env.VERCEL_URL ||
-    process.env.SITE_URL?.replace(/^https?:\/\//, "");
-  if (!host) return null;
+    process.env.SITE_URL?.replace(/^https?:\/\//, "") ||
+    DEFAULT_HOST;
   const clean = host.replace(/^https?:\/\//, "").replace(/\/$/, "");
   return `https://${clean}`;
 }
@@ -23,29 +24,14 @@ function siteBase() {
 const entries = [
   { path: "/", changefreq: "weekly", priority: "1.0", hreflang: true },
   { path: "/games/", changefreq: "monthly", priority: "0.9" },
-  ...[
-    "wordle",
-    "snake",
-    "2048",
-    "memory",
-    "tetris",
-    "flappy",
-    "breakout",
-    "tictactoe",
-    "space",
-    "dino",
-    "whack",
-    "pong",
-    "tower",
-    "connect4",
-  ].map((slug) => ({
-    path: `/games/${slug}`,
+  ...catalog.map((g) => ({
+    path: `/games/${g.slug}`,
     changefreq: "yearly",
     priority: "0.7",
   })),
 ];
 
-const lastmod = "2026-05-18";
+const lastmod = new Date().toISOString().slice(0, 10);
 
 function escapeXml(s) {
   return s
@@ -59,12 +45,11 @@ function buildSitemap(base) {
   const urls = entries
     .map((e) => {
       const loc = `${base}${e.path === "/" ? "/" : e.path}`;
-      const hreflang =
-        e.hreflang
-          ? `
+      const hreflang = e.hreflang
+        ? `
     <xhtml:link rel="alternate" hreflang="en" href="${escapeXml(loc)}"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(loc)}"/>`
-          : "";
+        : "";
       return `  <url>
     <loc>${escapeXml(loc)}</loc>
     <lastmod>${lastmod}</lastmod>
@@ -97,13 +82,6 @@ function patchRobots(base) {
 }
 
 const base = siteBase();
-if (!base) {
-  console.log(
-    "generate-sitemap: no VERCEL_* or SITE_URL — keeping committed sitemap.xml / robots.txt",
-  );
-  process.exit(0);
-}
-
 writeFileSync(join(root, "sitemap.xml"), buildSitemap(base));
 patchRobots(base);
-console.log(`generate-sitemap: wrote sitemap for ${base}`);
+console.log(`generate-sitemap: wrote ${entries.length} urls for ${base}`);

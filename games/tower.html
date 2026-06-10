@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Stack blocks with perfect timing."/>
+<meta name="author" content="Mohammed Al-Omari"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://mohammedalomari.dev/games/tower"/>
+<meta property="og:title" content="Building Tower — M.GAMES"/>
+<meta property="og:description" content="Stack blocks with perfect timing."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://mohammedalomari.dev/games/tower"/>
 <link rel="icon" type="image/png" href="/Images/logo.png"/>
 <title>Building Tower — M.Games</title>
-<link rel="stylesheet" href="shared.css"/>
-<style>
-.game-main{gap:1rem;min-height:50vh}
-#startScreen{position:absolute;inset:0;z-index:5;background:rgba(5,5,16,.88);backdrop-filter:blur(6px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;border-radius:12px}
-#startScreen.hidden{opacity:0;pointer-events:none;visibility:hidden}
-.start-emoji{font-size:3rem}.start-hint{font-family:var(--g-mono);font-size:.8rem;color:var(--g-muted);text-align:center;padding:0 1rem;max-width:24rem}
-.canvas-wrap{position:relative;width:min(100%,640px);border-radius:12px;overflow:hidden;border:1px solid var(--g-border)}
-.canvas-wrap canvas{display:block;width:100%;touch-action:none}
-
-</style>
+<link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="game-skins.css" />
 </head>
-<body>
+<body class="game--tower">
 <div class="g-noise" aria-hidden="true"></div>
 <header class="game-header"><div class="game-header__inner">
 <a href="index.html" class="game-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</a>

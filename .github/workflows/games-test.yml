@@ -4,11 +4,21 @@ on:
   push:
     paths:
       - 'games/**'
+      - 'index.html'
+      - 'script.js'
+      - 'style.css'
+      - 'sw.js'
+      - 'sitemap.xml'
+      - 'e2e/**'
       - 'package.json'
       - 'vitest.config.js'
+      - 'playwright.config.js'
   pull_request:
     paths:
       - 'games/**'
+      - 'index.html'
+      - 'script.js'
+      - 'e2e/**'
 
 jobs:
   unit:

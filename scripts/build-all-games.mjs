@@ -9,7 +9,7 @@ mkdirSync(join(G, 'data'), { recursive: true });
 function shell({ title, slug, emoji, hud, body, extra = '', module = false, script }) {
   const hudFixed = (hud || ['Score', 'Best']).map((l) => {
     const id = 'hud' + l.replace(/\s+/g, '');
-    return `<div class="hud-item"><span class="hud-item__label">${l}</span><span class="hud-item__value" id="${id}">0</span></motion>`;
+    return `<div class="hud-item"><span class="hud-item__label">${l}</span><span class="hud-item__value" id="${id}">0</span></div>`;
   }).join('\n        ').replace(/<\/motion>/g, '</div>');
   return `<!DOCTYPE html>
 <html lang="en">

@@ -5,6 +5,7 @@
 ```bash
 npm test          # Vitest unit tests (games/logic)
 npm run test:e2e  # Playwright smoke tests
+npm run build     # Regenerate sw.js + sitemap.xml from catalog.json
 ```
 
 ## Manual checklist (every game)
@@ -17,14 +18,26 @@ npm run test:e2e  # Playwright smoke tests
 - [ ] No console errors during 5-minute session
 - [ ] Offline: page loads after first visit (service worker)
 
-## Per-wave smoke URLs
+## Live catalog (13 games)
 
-Open `/games/index.html`, filter by genre, launch 2 random cards per genre.
+Open `/games/`, filter by genre, launch each card.
 
-| Wave | Games |
+| Slug | Genre |
 |------|-------|
-| Original 14 | wordle, snake, 2048, memory, tetris, flappy, breakout, tictactoe, space, dino, whack, pong, tower, connect4 |
-| Wave 1 | hangman, word-scramble, trick-quiz, brain-check, idle-farm, mix-master, solitaire |
-| Wave 2 | gold-hook, bubble-spin, bull-run, neon-drift, cell-feast, home-run, block-roll, tile-link |
-| Wave 3 | dice-wars, lane-defense, pizza-queue, diner-rush, balloon-td |
-| Wave 4 | hex-conquest, neon-pool |
+| wordle | Word |
+| snake | Arcade |
+| tetris | Arcade |
+| flappy | Arcade |
+| tower | Arcade |
+| 2048 | Puzzle |
+| memory | Memory |
+| tictactoe | Strategy |
+| connect4 | Strategy |
+| space | Action |
+| whack | Skill |
+| pong | Skill |
+| dice-wars | Board |
+
+## Logic-only modules (unit tested, no HTML shell)
+
+`hangman`, `word-scramble`, `quiz`, `mix-master`, `solitaire`, `idle-farm`, `bloxorz`, `click-island` — covered by Vitest under `games/tests/`.

@@ -7,7 +7,8 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const catalog = JSON.parse(readFileSync(join(root, 'games/catalog.json'), 'utf8'));
 let html = readFileSync(join(root, 'games/index.html'), 'utf8');
 
-const filters = ['all', 'Action', 'Adventure', 'Arcade', 'Board', 'Card', 'Clicker', 'Driving', 'io', 'Puzzle', 'Shooting', 'Simulation', 'Sports', 'Strategy', 'Trivia', 'Word', 'Memory', 'Skill'];
+const genres = [...new Set(catalog.map((g) => g.genre))].sort();
+const filters = ['all', ...genres];
 const filterHtml = filters.map((f, i) =>
   `<button class="g-filter__btn${i === 0 ? ' active' : ''}" data-filter="${f}">${f === 'all' ? 'All' : f === 'io' ? '.io' : f}</button>`
 ).join('\n          ');
@@ -23,7 +24,7 @@ function card(g) {
     ? `<div class="g-card__thumb"><img src="../Images/wordle-game.jpg" alt="Wordle" loading="lazy" class="g-card__thumb-img"/><div class="g-card__thumb-veil"></div></div>`
     : '';
   return `<a href="${g.slug}.html" class="${cls}" data-genre="${g.genre}" aria-label="Play ${g.title}">
-          ${thumb.replace('</motion>', '</div>')}
+          ${thumb}
           <div class="g-card__badges">${badges.join('')}</div>
           <div class="g-card__icon">${g.icon}</div>
           <h3 class="g-card__title">${g.title}</h3>

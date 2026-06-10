@@ -63,10 +63,10 @@ body {
 .game-back svg { width: 14px; height: 14px; }
 
 .game-title {
-  font-family: var(--g-mono); font-weight: 700; font-size: 1rem;
-  background: var(--g-grad-text);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text; letter-spacing: 0.02em;
+  font-family: var(--g-sans); font-weight: 700; font-size: 1rem;
+  color: var(--g-text);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .game-hud {
@@ -261,13 +261,6 @@ body {
 /* ==========================================================================
    Game Title Gradient Pulse
    ========================================================================== */
-.game-title {
-  animation: titlePulse 4s ease-in-out infinite alternate;
-}
-@keyframes titlePulse {
-  from { filter: brightness(1); }
-  to   { filter: brightness(1.2) drop-shadow(0 0 8px rgba(99,102,241,0.4)); }
-}
 
 /* ==========================================================================
    Overlay box entrance
