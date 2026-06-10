@@ -75,7 +75,7 @@
     "title": "Memory Match",
     "genre": "Memory",
     "icon": "🃏",
-    "desc": "Flip pairs before time runs out.",
+    "desc": "Flip and match all pairs in fewest moves.",
     "tags": [
       "CSS 3D",
       "Memory"

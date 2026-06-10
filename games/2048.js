@@ -4,10 +4,11 @@ const boardEl = document.getElementById('board');
 const hudScore = document.getElementById('hudScore');
 const hudBest = document.getElementById('hudBest');
 const overlay = document.getElementById('overlay');
+const overlayTitle = document.getElementById('overlayTitle');
 const againBtn = document.getElementById('againBtn');
 const newBtn = document.getElementById('newBtn');
 
-let grid, score, best;
+let grid, score, best, gameOver;
 
 function loadBest() {
   try { best = Number(localStorage.getItem('2048_best')) || 0; } catch (_) { best = 0; }
@@ -50,6 +51,24 @@ function slide(row) {
   return merged;
 }
 
+function showWin2048() {
+  overlay.classList.add('visible');
+  overlayTitle.textContent = 'You reached 2048!';
+}
+
+function showGameOver() {
+  if (gameOver) return;
+  gameOver = true;
+  overlay.classList.add('visible');
+  overlayTitle.textContent = 'Game Over — No moves left!';
+}
+
+function tryMove(dir) {
+  if (gameOver) return;
+  move(dir);
+  if (!canMove()) showGameOver();
+}
+
 function move(dir) {
   const prev = JSON.stringify(grid);
   if (dir === 'left') grid = grid.map((row) => slide(row));
@@ -71,7 +90,7 @@ function move(dir) {
   if (JSON.stringify(grid) !== prev) spawn();
   if (score > best) { best = score; try { localStorage.setItem('2048_best', String(best)); } catch (_) {} hudBest.textContent = best; }
   render();
-  if (grid.flat().includes(2048)) { overlay.classList.add('visible'); document.getElementById('overlayTitle').textContent = 'You reached 2048!'; }
+  if (grid.flat().includes(2048)) showWin2048();
 }
 
 function canMove() {
@@ -84,24 +103,31 @@ function canMove() {
 }
 
 function newGame() {
-  grid = empty(); score = 0; overlay.classList.remove('visible');
-  spawn(); spawn(); render();
+  grid = empty();
+  score = 0;
+  gameOver = false;
+  overlay.classList.remove('visible');
+  spawn();
+  spawn();
+  render();
 }
 
 window.addEventListener('keydown', (e) => {
   const m = { ArrowLeft: 'left', ArrowRight: 'right', ArrowUp: 'up', ArrowDown: 'down' };
-  if (m[e.key]) { e.preventDefault(); move(m[e.key]); if (!canMove()) overlay.classList.add('visible'); }
+  if (m[e.key]) { e.preventDefault(); tryMove(m[e.key]); }
 });
 
 let tx, ty;
 boardEl.addEventListener('touchstart', (e) => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
 boardEl.addEventListener('touchend', (e) => {
+  if (gameOver) return;
   const dx = e.changedTouches[0].clientX - tx;
   const dy = e.changedTouches[0].clientY - ty;
-  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 30) move(dx > 0 ? 'right' : 'left');
-  else if (Math.abs(dy) > 30) move(dy > 0 ? 'down' : 'up');
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 30) tryMove(dx > 0 ? 'right' : 'left');
+  else if (Math.abs(dy) > 30) tryMove(dy > 0 ? 'down' : 'up');
 });
 
 againBtn.addEventListener('click', newGame);
 newBtn.addEventListener('click', newGame);
-loadBest(); newGame();
+loadBest();
+newGame();

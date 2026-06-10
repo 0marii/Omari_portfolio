@@ -204,6 +204,11 @@ function submitGuess() {
   }
 
   const guess = currentGuess.join('').toLowerCase();
+  if (!WORDS.includes(guess)) {
+    showMessage('Not in word list');
+    shakeRow(currentRow);
+    return;
+  }
   revealRow(guess);
 }
 
