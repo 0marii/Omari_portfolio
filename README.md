@@ -349,7 +349,7 @@ Portfolio content, design, and game implementations are personal work. Third-par
 **Mohammed Al-Omari** — Backend Software Engineer  
 Amman, Jordan
 
-- Website: [mohammedalomari.dev](https://mohammedalomari.dev)
+- Website: [ Mohammad Al-omari](https://omari.vercel.app/)
 - GitHub: [@0marii](https://github.com/0marii)
 - LinkedIn: [mohammad-al-omari](https://www.linkedin.com/in/mohammad-al-omari-49b99311b/)
 - Email: [mo.omari862@gmail.com](mailto:mo.omari862@gmail.com)
